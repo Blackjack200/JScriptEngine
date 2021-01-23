@@ -2,6 +2,7 @@ package site.misaka.script.adapter;
 
 import cn.nukkit.plugin.Plugin;
 import lombok.Getter;
+import site.misaka.engine.EngineAdapter;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -12,8 +13,8 @@ public class FileUtils extends AbstractUtils {
 	@Getter
 	private final String path;
 
-	public FileUtils(Plugin plugin, String scriptName) {
-		super(plugin, scriptName);
+	public FileUtils(Plugin plugin, String scriptName, EngineAdapter adapter) {
+		super(plugin, scriptName, adapter);
 		this.path = plugin.getDataFolder().getAbsoluteFile() + File.separator + scriptName.replace(".", "-") + File.separator;
 		File file = new File(this.path);
 		file.mkdirs();

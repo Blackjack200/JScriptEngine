@@ -1,5 +1,6 @@
 package site.misaka.utils;
 
+import site.misaka.script.adapter.CommandUtils;
 import site.misaka.script.adapter.ParseUtils;
 
 import java.lang.reflect.Method;
@@ -46,7 +47,7 @@ public class DocumentGenerator {
 	}
 
 	public static void main(String args[]) {
-		Class clazz = ParseUtils.class;
+		Class clazz = CommandUtils.class;
 		StringBuilder builder = new StringBuilder();
 		builder.append("## Field: `").append(clazz.getSimpleName()).append("`\n\n");
 		builder.append(" Methods: \n");

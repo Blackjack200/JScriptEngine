@@ -1,12 +1,17 @@
 package site.misaka.engine;
 
-import java.util.List;
-import java.util.Map;
+public abstract class EngineAdapter<T> {
+	protected T engine;
 
-public abstract class EngineAdapter {
-	abstract public void load(String code, Map<String, Object> variables);
+	public EngineAdapter(T engine) {
+		this.engine = engine;
+	}
 
-	abstract public void invoke(String name, Object... args);
+	public abstract void invoke(String name, Object... args);
 
-	abstract public List<String> extensions();
+	public abstract void put(String name, Object val);
+
+	public abstract boolean load(String code);
+
+	public abstract T get();
 }

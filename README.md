@@ -15,3 +15,5 @@ API Document: [STUB](/docs/stub.md)
 Script demo: [DEMO](/docs/demo.md)
 
 Installation: [INSTALLATION](/docs/installation.md)
+
+Error(Known Issue): [ERROR](/docs/error.md)

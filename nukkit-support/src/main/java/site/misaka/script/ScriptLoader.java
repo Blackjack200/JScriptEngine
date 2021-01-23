@@ -1,8 +1,14 @@
 package site.misaka.script;
 
-import site.misaka.NukkitScriptLoader;
+import site.misaka.Loader;
 import site.misaka.engine.EngineAdapter;
+import site.misaka.engine.IEngineProcessor;
+import site.misaka.engine.Processor;
 import site.misaka.process.ScriptEngineFacade;
+import site.misaka.process.UnionData;
+import site.misaka.script.adapter.CommandUtils;
+import site.misaka.script.adapter.DataStructureUtils;
+import site.misaka.script.adapter.ParseUtils;
 import site.misaka.utils.FileUtils;
 
 import java.io.File;
@@ -17,13 +23,27 @@ public class ScriptLoader {
 	public static void loadScript(File file) {
 		final String name = file.getName();
 		String extension = name.substring(name.lastIndexOf('.') + 1);
-		for (EngineAdapter adapter : ScriptEngineFacade.getAdapters()) {
-			if (adapter.extensions().contains(extension)) {
+		for (IEngineProcessor processor : ScriptEngineFacade.getAdapters()) {
+			if (processor.extensions().contains(extension)) {
 				Thread thread = new Thread(() -> {
-					synchronized (adapter) {
+					synchronized (processor) {
 						try {
-							adapter.load(FileUtils.file_get_content(file), ScriptEngineFacade.properties(name));
-							NukkitScriptLoader.getInstance().getLogger().info("Load Script:" + name);
+							EngineAdapter adapter = (EngineAdapter) processor.process(FileUtils.file_get_content(file), UnionData.getProperties(name), new Processor() {
+								@Override
+								public void preprocess(EngineAdapter engine) {
+									engine.put("ds", new DataStructureUtils(Loader.getInstance(), name, engine));
+									engine.put("file", new site.misaka.script.adapter.FileUtils(Loader.getInstance(), name, engine));
+									engine.put("parse", new ParseUtils(Loader.getInstance(), name, engine));
+									engine.put("command", new CommandUtils(Loader.getInstance(), name, engine));
+								}
+							});
+
+							if (adapter != null) {
+								UnionData.getScripts().put(name, adapter);
+								Loader.getInstance().getLogger().info("Load Script: " + name);
+								return;
+							}
+							Loader.getInstance().getLogger().info("Failed to load script: " + name);
 						} catch (IOException e) {
 							e.printStackTrace();
 						}

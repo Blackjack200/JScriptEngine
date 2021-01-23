@@ -58,3 +58,14 @@ Methods:
 ## Field: `__NAME__`
 
 the name of script
+
+## Field: `command`
+
+Methods:
+
+```php
+  function createBuilder() : CommandBuilder
+  //This command is a compeleted CommandBuilder
+  //Demo builder.callback("callback_func").name("commandName").description("Demo command").build()
+  function register(Command arg0) : void
+```

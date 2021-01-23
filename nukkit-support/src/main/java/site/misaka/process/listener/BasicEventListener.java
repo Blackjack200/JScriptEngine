@@ -3,19 +3,6 @@ package site.misaka.process.listener;
 import cn.nukkit.event.EventHandler;
 import cn.nukkit.event.EventPriority;
 import cn.nukkit.event.Listener;
-import cn.nukkit.event.block.*;
-import cn.nukkit.event.entity.*;
-import cn.nukkit.event.inventory.*;
-import cn.nukkit.event.level.*;
-import cn.nukkit.event.player.*;
-import cn.nukkit.event.plugin.PluginDisableEvent;
-import cn.nukkit.event.plugin.PluginEnableEvent;
-import cn.nukkit.event.potion.PotionApplyEvent;
-import cn.nukkit.event.potion.PotionCollideEvent;
-import cn.nukkit.event.redstone.RedstoneUpdateEvent;
-import cn.nukkit.event.server.*;
-import cn.nukkit.event.vehicle.*;
-import cn.nukkit.event.weather.LightningStrikeEvent;
 import site.misaka.process.ScriptEngineFacade;
 
 //WARNING
@@ -25,659 +12,136 @@ import site.misaka.process.ScriptEngineFacade;
 //THIS FILE IS AUTO-GENERATED
 @SuppressWarnings("unused")
 public class BasicEventListener implements Listener {
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onPlayerRespawn(PlayerRespawnEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onInteractEntity(PlayerInteractEntityEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onTeleport(PlayerTeleportEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-
-	public void onSwim(PlayerToggleSwimEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onGlide(PlayerToggleGlideEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onSneak(PlayerToggleSneakEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onSprint(PlayerToggleSprintEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onFlight(PlayerToggleFlightEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onEnterBed(PlayerBedEnterEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onLeaveBed(PlayerBedLeaveEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onChat(PlayerChatEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onLogin(PlayerPreLoginEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onQuit(PlayerQuitEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onJoin(PlayerJoinEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onBreak(BlockBreakEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onPlace(BlockPlaceEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onFormResponse(PlayerFormRespondedEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onBlockPistonChangeEvent(BlockPistonChangeEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onBlockUpdateEvent(BlockUpdateEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onBlockSpreadEvent(BlockSpreadEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onDoorToggleEvent(DoorToggleEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onBlockRedstoneEvent(BlockRedstoneEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onCommand(PlayerCommandPreprocessEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onInventory(InventoryTransactionEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onPlayerItemHeld(PlayerItemHeldEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onInteract(PlayerInteractEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onServerCommand(ServerCommandEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onMove(PlayerMoveEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onEntity(EntitySpawnEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onEntityDespawn(EntityDespawnEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onEntityDamage(EntityDamageEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onEntityDamageByEntityEvent(EntityDamageByEntityEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onDeath(PlayerDeathEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onEntityDeath(EntityDeathEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onEntityTeleport(EntityTeleportEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onItemDespawnEvent(ItemDespawnEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onItemSpawnEvent(ItemSpawnEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onProjecttileHit(ProjectileHitEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onProjectileLaunch(ProjectileLaunchEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onEntityLevelChangeEvent(EntityLevelChangeEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onEntityInventoryChange(EntityInventoryChangeEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onExplosionPrime(EntityExplosionPrimeEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onBlockBurn(BlockBurnEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onBlockFormEvent(BlockFormEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onBlockIgniteEvent(BlockIgniteEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onBlockFade(BlockFadeEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onBlockFall(BlockFallEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onBlockGrow(BlockGrowEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onSignChangeEvent(SignChangeEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onItemFrameDrop(ItemFrameDropItemEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onLeavesDecay(LeavesDecayEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onRedstoneUpdateEvent(RedstoneUpdateEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onCraft(CraftItemEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onInventoryOpen(InventoryOpenEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onInventoryClock(InventoryCloseEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onFurnaceBurn(FurnaceBurnEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onFurnaceSmelt(FurnaceSmeltEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onInventoryPickupArrow(InventoryPickupArrowEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onIntentoryPickupItem(InventoryPickupItemEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onPotionCollideEvent(PotionCollideEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onDataPacketReceive(DataPacketReceiveEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onDataPacketSend(DataPacketSendEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onQueryRegenerate(QueryRegenerateEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onBlockForm(BlockFormEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onBlockFormTo(BlockFromToEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onLiquid(LiquidFlowEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onInventoryClick(InventoryClickEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onChunkUnload(ChunkUnloadEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onPlayerSetting(PlayerSettingsRespondedEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onCreatureSpawnEvent(CreatureSpawnEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onCreeperPowerEvent(CreeperPowerEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onEntityArmorChangeEvent(EntityArmorChangeEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onEntityBlockChangeEvent(EntityBlockChangeEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onEntityCombustByBlockEvent(EntityCombustByBlockEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onEntityCombustByEntityEvent(EntityCombustByEntityEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onEntityCombustEvent(EntityCombustEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onEntityDamageByBlockEvent(EntityDamageByBlockEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onEntityDamageByChildEntityEvent(EntityDamageByChildEntityEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onEntityExplodeEvent(EntityExplodeEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onEntityMotionEvent(EntityMotionEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onEntityPortalEnterEvent(EntityPortalEnterEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onEntityRegainHealthEvent(EntityRegainHealthEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onEntityShootBowEvent(EntityShootBowEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onEntityVehicleEnterEvent(EntityVehicleEnterEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onEntityVehicleExitEvent(EntityVehicleExitEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onExplosionPrimeEvent(ExplosionPrimeEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onBrewEvent(BrewEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onEnchantItemEvent(EnchantItemEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onInventoryMoveItemEvent(InventoryMoveItemEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onStartBrewEvent(StartBrewEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onChunkLoadEvent(ChunkLoadEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onChunkPopulateEvent(ChunkPopulateEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onLevelInitEvent(LevelInitEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onLevelLoadEvent(LevelLoadEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onLevelSaveEvent(LevelSaveEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onLevelUnloadEvent(LevelUnloadEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onSpawnChangeEvent(SpawnChangeEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onThunderChangeEvent(ThunderChangeEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onWeatherChangeEvent(WeatherChangeEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onPlayerAchievementAwardedEvent(PlayerAchievementAwardedEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onPlayerAnimationEvent(PlayerAnimationEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onPlayerAsyncPreLoginEvent(PlayerAsyncPreLoginEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onPlayerBlockPickEvent(PlayerBlockPickEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onPlayerBucketEmptyEvent(PlayerBucketEmptyEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onPlayerBucketFillEvent(PlayerBucketFillEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onPlayerChangeSkinEvent(PlayerChangeSkinEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onPlayerChunkRequestEvent(PlayerChunkRequestEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onPlayerCreationEvent(PlayerCreationEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onPlayerDropItemEvent(PlayerDropItemEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	////////////////////////
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onPlayerEatFoodEvent(PlayerEatFoodEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onPlayerEditBookEvent(PlayerEditBookEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onPlayerFoodLevelChangeEvent(PlayerFoodLevelChangeEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onPlayerGameModeChangeEvent(PlayerGameModeChangeEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	//////////////222222
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onPlayerMouseOverEntityEvent(PlayerMouseOverEntityEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onPlayerServerSettingsRequestEvent(PlayerServerSettingsRequestEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onPotionApplyEvent(PotionApplyEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void PlayerDataSerializeEvent(PlayerDataSerializeEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onPluginEnableEvent(PluginEnableEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onPluginDisableEvent(PluginDisableEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onRemoteServerCommandEvent(RemoteServerCommandEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onEntityEnterVehicleEvent(EntityEnterVehicleEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onEntityExitVehicleEvent(EntityExitVehicleEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onVehicleCreateEvent(VehicleCreateEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onVehicleDamageEvent(VehicleDamageEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onVehicleDestroyEvent(VehicleDestroyEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onVehicleMoveEvent(VehicleMoveEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onVehicleUpdateEvent(VehicleUpdateEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	@EventHandler(priority = EventPriority.MONITOR)
-	public void onLightningStrikeEvent(LightningStrikeEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	public void onPlayerItemConsumeEvent(PlayerItemConsumeEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	public void onPlayerKickEvent(PlayerKickEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
-
-	public void onPlayerMapInfoRequestEvent(PlayerMapInfoRequestEvent event) {
-		ScriptEngineFacade.invokeEvent(event);
-	}
+	@EventHandler(priority = EventPriority.MONITOR) public void BlockPlaceEvent(cn.nukkit.event.block.BlockPlaceEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void BlockBreakEvent(cn.nukkit.event.block.BlockBreakEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void BlockIgniteEvent(cn.nukkit.event.block.BlockIgniteEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void DoorToggleEvent(cn.nukkit.event.block.DoorToggleEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void ItemFrameDropItemEvent(cn.nukkit.event.block.ItemFrameDropItemEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void BlockPistonChangeEvent(cn.nukkit.event.block.BlockPistonChangeEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void LiquidFlowEvent(cn.nukkit.event.block.LiquidFlowEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void BlockFallEvent(cn.nukkit.event.block.BlockFallEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void BlockSpreadEvent(cn.nukkit.event.block.BlockSpreadEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void BlockGrowEvent(cn.nukkit.event.block.BlockGrowEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void SignChangeEvent(cn.nukkit.event.block.SignChangeEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void LeavesDecayEvent(cn.nukkit.event.block.LeavesDecayEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void BlockUpdateEvent(cn.nukkit.event.block.BlockUpdateEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void BlockBurnEvent(cn.nukkit.event.block.BlockBurnEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void BlockFadeEvent(cn.nukkit.event.block.BlockFadeEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void BlockFormEvent(cn.nukkit.event.block.BlockFormEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void BlockFromToEvent(cn.nukkit.event.block.BlockFromToEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void BlockRedstoneEvent(cn.nukkit.event.block.BlockRedstoneEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void ProjectileHitEvent(cn.nukkit.event.entity.ProjectileHitEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void EntityDeathEvent(cn.nukkit.event.entity.EntityDeathEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void EntityArmorChangeEvent(cn.nukkit.event.entity.EntityArmorChangeEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void EntityCombustEvent(cn.nukkit.event.entity.EntityCombustEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void EntityVehicleEnterEvent(cn.nukkit.event.entity.EntityVehicleEnterEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void EntityRegainHealthEvent(cn.nukkit.event.entity.EntityRegainHealthEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void EntityInventoryChangeEvent(cn.nukkit.event.entity.EntityInventoryChangeEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void EntityInteractEvent(cn.nukkit.event.entity.EntityInteractEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void EntityMotionEvent(cn.nukkit.event.entity.EntityMotionEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void ProjectileLaunchEvent(cn.nukkit.event.entity.ProjectileLaunchEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void EntitySpawnEvent(cn.nukkit.event.entity.EntitySpawnEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void CreeperPowerEvent(cn.nukkit.event.entity.CreeperPowerEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void EntityDespawnEvent(cn.nukkit.event.entity.EntityDespawnEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void ItemSpawnEvent(cn.nukkit.event.entity.ItemSpawnEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void CreatureSpawnEvent(cn.nukkit.event.entity.CreatureSpawnEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void ExplosionPrimeEvent(cn.nukkit.event.entity.ExplosionPrimeEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void EntityShootBowEvent(cn.nukkit.event.entity.EntityShootBowEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void ItemDespawnEvent(cn.nukkit.event.entity.ItemDespawnEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void EntityDamageEvent(cn.nukkit.event.entity.EntityDamageEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void EntityBlockChangeEvent(cn.nukkit.event.entity.EntityBlockChangeEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void EntityLevelChangeEvent(cn.nukkit.event.entity.EntityLevelChangeEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void EntityVehicleExitEvent(cn.nukkit.event.entity.EntityVehicleExitEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void EntityTeleportEvent(cn.nukkit.event.entity.EntityTeleportEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void EntityPortalEnterEvent(cn.nukkit.event.entity.EntityPortalEnterEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void EntityExplosionPrimeEvent(cn.nukkit.event.entity.EntityExplosionPrimeEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void EntityExplodeEvent(cn.nukkit.event.entity.EntityExplodeEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void InventoryPickupItemEvent(cn.nukkit.event.inventory.InventoryPickupItemEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void StartBrewEvent(cn.nukkit.event.inventory.StartBrewEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void BrewEvent(cn.nukkit.event.inventory.BrewEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void InventoryOpenEvent(cn.nukkit.event.inventory.InventoryOpenEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void InventoryPickupTridentEvent(cn.nukkit.event.inventory.InventoryPickupTridentEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void FurnaceBurnEvent(cn.nukkit.event.inventory.FurnaceBurnEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void CraftItemEvent(cn.nukkit.event.inventory.CraftItemEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void EnchantItemEvent(cn.nukkit.event.inventory.EnchantItemEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void InventoryCloseEvent(cn.nukkit.event.inventory.InventoryCloseEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void InventoryPickupArrowEvent(cn.nukkit.event.inventory.InventoryPickupArrowEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void InventoryTransactionEvent(cn.nukkit.event.inventory.InventoryTransactionEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void FurnaceSmeltEvent(cn.nukkit.event.inventory.FurnaceSmeltEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void InventoryClickEvent(cn.nukkit.event.inventory.InventoryClickEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void InventoryMoveItemEvent(cn.nukkit.event.inventory.InventoryMoveItemEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void LevelInitEvent(cn.nukkit.event.level.LevelInitEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void ChunkLoadEvent(cn.nukkit.event.level.ChunkLoadEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void ChunkPopulateEvent(cn.nukkit.event.level.ChunkPopulateEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void WeatherChangeEvent(cn.nukkit.event.level.WeatherChangeEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void SpawnChangeEvent(cn.nukkit.event.level.SpawnChangeEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void LevelSaveEvent(cn.nukkit.event.level.LevelSaveEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void ChunkUnloadEvent(cn.nukkit.event.level.ChunkUnloadEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void ThunderChangeEvent(cn.nukkit.event.level.ThunderChangeEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void LevelUnloadEvent(cn.nukkit.event.level.LevelUnloadEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void LevelLoadEvent(cn.nukkit.event.level.LevelLoadEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void StructureGrowEvent(cn.nukkit.event.level.StructureGrowEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void PlayerQuitEvent(cn.nukkit.event.player.PlayerQuitEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void PlayerRespawnEvent(cn.nukkit.event.player.PlayerRespawnEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void PlayerBedEnterEvent(cn.nukkit.event.player.PlayerBedEnterEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void PlayerItemConsumeEvent(cn.nukkit.event.player.PlayerItemConsumeEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void PlayerPreLoginEvent(cn.nukkit.event.player.PlayerPreLoginEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void PlayerCommandPreprocessEvent(cn.nukkit.event.player.PlayerCommandPreprocessEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void PlayerSettingsRespondedEvent(cn.nukkit.event.player.PlayerSettingsRespondedEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void PlayerEditBookEvent(cn.nukkit.event.player.PlayerEditBookEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void PlayerGameModeChangeEvent(cn.nukkit.event.player.PlayerGameModeChangeEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void PlayerServerSettingsRequestEvent(cn.nukkit.event.player.PlayerServerSettingsRequestEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void PlayerAchievementAwardedEvent(cn.nukkit.event.player.PlayerAchievementAwardedEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void PlayerFoodLevelChangeEvent(cn.nukkit.event.player.PlayerFoodLevelChangeEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void PlayerInteractEntityEvent(cn.nukkit.event.player.PlayerInteractEntityEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void PlayerToggleSwimEvent(cn.nukkit.event.player.PlayerToggleSwimEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void PlayerDropItemEvent(cn.nukkit.event.player.PlayerDropItemEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void PlayerMapInfoRequestEvent(cn.nukkit.event.player.PlayerMapInfoRequestEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void PlayerEatFoodEvent(cn.nukkit.event.player.PlayerEatFoodEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void PlayerFormRespondedEvent(cn.nukkit.event.player.PlayerFormRespondedEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void PlayerToggleGlideEvent(cn.nukkit.event.player.PlayerToggleGlideEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void PlayerInvalidMoveEvent(cn.nukkit.event.player.PlayerInvalidMoveEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void PlayerCreationEvent(cn.nukkit.event.player.PlayerCreationEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void PlayerChunkRequestEvent(cn.nukkit.event.player.PlayerChunkRequestEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void PlayerChangeSkinEvent(cn.nukkit.event.player.PlayerChangeSkinEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void PlayerJoinEvent(cn.nukkit.event.player.PlayerJoinEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void PlayerInteractEvent(cn.nukkit.event.player.PlayerInteractEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void PlayerChatEvent(cn.nukkit.event.player.PlayerChatEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void PlayerTeleportEvent(cn.nukkit.event.player.PlayerTeleportEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void PlayerBucketEmptyEvent(cn.nukkit.event.player.PlayerBucketEmptyEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void PlayerToggleSneakEvent(cn.nukkit.event.player.PlayerToggleSneakEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void PlayerAsyncPreLoginEvent(cn.nukkit.event.player.PlayerAsyncPreLoginEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void PlayerKickEvent(cn.nukkit.event.player.PlayerKickEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void PlayerItemHeldEvent(cn.nukkit.event.player.PlayerItemHeldEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void PlayerDeathEvent(cn.nukkit.event.player.PlayerDeathEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void PlayerLocallyInitializedEvent(cn.nukkit.event.player.PlayerLocallyInitializedEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void PlayerToggleSprintEvent(cn.nukkit.event.player.PlayerToggleSprintEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void PlayerAnimationEvent(cn.nukkit.event.player.PlayerAnimationEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void PlayerToggleFlightEvent(cn.nukkit.event.player.PlayerToggleFlightEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void PlayerBlockPickEvent(cn.nukkit.event.player.PlayerBlockPickEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void PlayerMoveEvent(cn.nukkit.event.player.PlayerMoveEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void PlayerMouseOverEntityEvent(cn.nukkit.event.player.PlayerMouseOverEntityEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void PlayerJumpEvent(cn.nukkit.event.player.PlayerJumpEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void PlayerBedLeaveEvent(cn.nukkit.event.player.PlayerBedLeaveEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void PlayerBucketFillEvent(cn.nukkit.event.player.PlayerBucketFillEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void PlayerLoginEvent(cn.nukkit.event.player.PlayerLoginEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void PluginEvent(cn.nukkit.event.plugin.PluginEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void PotionApplyEvent(cn.nukkit.event.potion.PotionApplyEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void PotionCollideEvent(cn.nukkit.event.potion.PotionCollideEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void RedstoneUpdateEvent(cn.nukkit.event.redstone.RedstoneUpdateEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void QueryRegenerateEvent(cn.nukkit.event.server.QueryRegenerateEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void ServerCommandEvent(cn.nukkit.event.server.ServerCommandEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void DataPacketSendEvent(cn.nukkit.event.server.DataPacketSendEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void DataPacketReceiveEvent(cn.nukkit.event.server.DataPacketReceiveEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void BatchPacketsEvent(cn.nukkit.event.server.BatchPacketsEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void PlayerDataSerializeEvent(cn.nukkit.event.server.PlayerDataSerializeEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void RemoteServerCommandEvent(cn.nukkit.event.server.RemoteServerCommandEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void VehicleDestroyEvent(cn.nukkit.event.vehicle.VehicleDestroyEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void VehicleDamageEvent(cn.nukkit.event.vehicle.VehicleDamageEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void VehicleUpdateEvent(cn.nukkit.event.vehicle.VehicleUpdateEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void EntityEnterVehicleEvent(cn.nukkit.event.vehicle.EntityEnterVehicleEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void VehicleCreateEvent(cn.nukkit.event.vehicle.VehicleCreateEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void EntityExitVehicleEvent(cn.nukkit.event.vehicle.EntityExitVehicleEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void VehicleMoveEvent(cn.nukkit.event.vehicle.VehicleMoveEvent event) {ScriptEngineFacade.invokeEvent(event);}
+	@EventHandler(priority = EventPriority.MONITOR) public void LightningStrikeEvent(cn.nukkit.event.weather.LightningStrikeEvent event) {ScriptEngineFacade.invokeEvent(event);}
 }

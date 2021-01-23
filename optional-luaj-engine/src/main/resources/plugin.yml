@@ -1,6 +1,6 @@
 name: NS_LuaJSupport
 main: site.misaka.luaj.LuaJLoader
-version: 0.0.2
+version: 0.0.3
 api: 1.0.0
 author: Misaka
 load: STARTUP
