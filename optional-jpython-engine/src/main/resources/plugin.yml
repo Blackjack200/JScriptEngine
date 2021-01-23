@@ -1,6 +1,0 @@
-name: NS_JPythonSupport
-main: site.misaka.jpython.JPythonLoader
-version: 0.0.3
-api: 1.0.0
-author: Misaka
-load: STARTUP

@@ -34,7 +34,7 @@
         <!--optional_dependency-->
         <dependency>
             <groupId>site.misaka</groupId>
-            <artifactId>optional-jpython-engine</artifactId>
+            <artifactId>optional-jython-engine</artifactId>
             <version>0.0.3</version>
             <scope>provided</scope>
         </dependency>

@@ -6,11 +6,11 @@ import site.misaka.engine.Processor;
 
 import java.util.*;
 
-public class JPythonProcessor extends IEngineProcessor<JPythonAdapter> {
-	protected Vector<JPythonAdapter> engineList = new Vector<>();
+public class JythonProcessor extends IEngineProcessor<JythonAdapter> {
+	protected Vector<JythonAdapter> engineList = new Vector<>();
 	protected List<String> extensions;
 
-	public JPythonProcessor() {
+	public JythonProcessor() {
 		ArrayList<String> extensions = new ArrayList<>();
 		extensions.add("py");
 		this.extensions = Collections.unmodifiableList(extensions);
@@ -22,13 +22,13 @@ public class JPythonProcessor extends IEngineProcessor<JPythonAdapter> {
 	}
 
 	@Override
-	public JPythonAdapter process(String code, Map<String, Object> variables) {
+	public JythonAdapter process(String code, Map<String, Object> variables) {
 		return this.process(code, variables, null);
 	}
 
 	@Override
-	public JPythonAdapter process(String code, Map<String, Object> variables, Processor processor) {
-		JPythonAdapter adapter = new JPythonAdapter(new PythonInterpreter());
+	public JythonAdapter process(String code, Map<String, Object> variables, Processor processor) {
+		JythonAdapter adapter = new JythonAdapter(new PythonInterpreter());
 		for (Map.Entry<String, Object> entry : variables.entrySet()) {
 			adapter.put(entry.getKey(), entry.getValue());
 		}
@@ -46,7 +46,7 @@ public class JPythonProcessor extends IEngineProcessor<JPythonAdapter> {
 
 	@Override
 	public void invokeALL(String name, Object... args) {
-		for (JPythonAdapter engine : this.engineList) {
+		for (JythonAdapter engine : this.engineList) {
 			engine.invoke(name, args);
 		}
 	}

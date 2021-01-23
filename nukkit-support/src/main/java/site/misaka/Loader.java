@@ -7,7 +7,7 @@ import org.codehaus.groovy.jsr223.GroovyScriptEngineFactory;
 import org.jruby.embed.jsr223.JRubyEngineFactory;
 import org.luaj.vm2.script.LuaScriptEngineFactory;
 import site.misaka.groovy.GroovyProcessor;
-import site.misaka.jpython.JPythonProcessor;
+import site.misaka.jpython.JythonProcessor;
 import site.misaka.jruby.JRubyProcessor;
 import site.misaka.luaj.LuaJProcessor;
 import site.misaka.process.ScriptEngineFacade;
@@ -26,8 +26,8 @@ public class Loader extends PluginBase {
 		ScriptEngineFacade.init();
 		Map<String, Plugin> plugin = this.getServer().getPluginManager().getPlugins();
 		//硬编码快乐
-		if (plugin.containsKey("NS_JPythonSupport")) {
-			ScriptEngineFacade.getAdapters().add(new JPythonProcessor());
+		if (plugin.containsKey("NS_JythonSupport")) {
+			ScriptEngineFacade.getAdapters().add(new JythonProcessor());
 			this.getLogger().info("开启Python支持");
 		}
 

@@ -13,7 +13,7 @@
         <module>script-engine-basic</module>
         <module>nukkit-support</module>
         <module>optional-luaj-engine</module>
-        <module>optional-jpython-engine</module>
+        <module>optional-jython-engine</module>
         <module>optional-jruby-engine</module>
         <module>optional-groovy-engine</module>
     </modules>

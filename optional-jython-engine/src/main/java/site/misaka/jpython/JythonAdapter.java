@@ -6,8 +6,8 @@ import org.python.core.PyObject;
 import org.python.util.PythonInterpreter;
 import site.misaka.engine.EngineAdapter;
 
-public class JPythonAdapter extends EngineAdapter<PythonInterpreter> {
-	public JPythonAdapter(PythonInterpreter engine) {
+public class JythonAdapter extends EngineAdapter<PythonInterpreter> {
+	public JythonAdapter(PythonInterpreter engine) {
 		super(engine);
 	}
 
