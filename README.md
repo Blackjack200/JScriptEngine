@@ -6,6 +6,8 @@ ScriptEngine in Java
 
 QQ Group Number: 387324486
 
+Discord: [Link](https://discord.gg/g9a8TrZu34)
+
 This Project is not stable now and work in progress.
 
 ## Documents

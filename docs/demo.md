@@ -16,7 +16,7 @@ class DEMO implements Listener {
 
 ```javascript
 logger.warning("JavaScript")
-function PlayerJoinEvent(e) {
+function PlayerJoinEvent(event) {
     event.getPlayer().sendMessage("Hello")
 }
 ```
