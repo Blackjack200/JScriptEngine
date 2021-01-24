@@ -1,6 +1,5 @@
 package site.misaka.engine.nashorn;
 
-import jdk.internal.dynalink.beans.StaticClass;
 import jdk.nashorn.api.scripting.NashornScriptEngine;
 import lombok.SneakyThrows;
 import site.misaka.engine.PSREngineAdapter;
@@ -10,10 +9,32 @@ import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
 public class NashornAdapter extends PSREngineAdapter<NashornScriptEngine> {
+	protected Class<?> clazz;
+
 	public NashornAdapter(NashornScriptEngine engine) {
 		super(engine);
-		this.engine.put("extern_name", (BiConsumer<String, String>) this::extern_name);
-		this.engine.put("extern", (Consumer<String>) this::extern);
+		Class<?> clazz = null;
+		try {
+			clazz = Class.forName("jdk.internal.dynalink.beans.StaticClass");
+		} catch (Throwable ignore) {
+
+		}
+		try {
+			clazz = Class.forName("jdk.dynalink.beans.StaticClass");
+		} catch (Throwable ignore) {
+
+		}
+
+		if (clazz != null) {
+			this.clazz = clazz;
+			this.engine.put("extern_name", (BiConsumer<String, String>) this::extern_name);
+			this.engine.put("extern", (Consumer<String>) this::extern);
+		}
+	}
+
+	@SneakyThrows
+	private Object convert(Class<?> clazz) {
+		return this.clazz.getDeclaredMethod("forClass", Class.class).invoke(null, clazz);
 	}
 
 	@Override
@@ -31,7 +52,7 @@ public class NashornAdapter extends PSREngineAdapter<NashornScriptEngine> {
 		if (this.engine.get(bind) != null) {
 			throw new ScriptException("Global variable " + bind + " is already defined");
 		}
-		this.engine.put(bind, StaticClass.forClass(clazz));
+		this.engine.put(bind, this.convert(clazz));
 	}
 
 	@SneakyThrows
