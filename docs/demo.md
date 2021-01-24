@@ -9,6 +9,10 @@ class DEMO implements Listener {
 	public void PlayerJoinEvent(PlayerJoinEvent event) {
 		event.getPlayer().sendMessage("Hello");
 	}
+
+	public void finalize() {
+		//onDisable
+	}
 }
 ```
 
@@ -24,6 +28,10 @@ extern("java.lang.System")
 System.out.println("TEST")
 extern_name("java.lang.Runtime", "r")
 r.getRuntime().gc()
+
+function finalize() {
+    //onDisable
+}
 ```
 
 ## Groovy
@@ -34,6 +42,10 @@ logger.warning("Groovy")
 void PlayerJoinEvent(PlayerJoinEvent event) {
     event.getPlayer().sendMessage("Hello")
 }
+
+void finalize() {
+    //onDisable
+}
 ```
 
 ## Python
@@ -42,6 +54,8 @@ void PlayerJoinEvent(PlayerJoinEvent event) {
 logger.warning("Python")
 def PlayerJoinEvent(event) :
     event.getPlayer().sendMessage("Hello")
+def finalize():
+    //onDisable
 ```
 
 ## Lua
@@ -56,6 +70,10 @@ extern("java.lang.System")
 System.out:println("TEST")
 extern_name("java.lang.Runtime", "r")
 r:getRuntime():gc()
+
+function finalize()
+    //onDisable
+end
 ```
 
 ## Ruby
@@ -64,5 +82,9 @@ r:getRuntime():gc()
 logger.warning("Ruby")
 def PlayerJoinEvent(event)
     event.getPlayer().sendMessage("Hello") 
+end
+
+def finalize()
+    //onDisablel
 end
 ```

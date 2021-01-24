@@ -22,10 +22,14 @@ public class ScriptEngineFacade {
 		}
 	}
 
-	public static void invokeEvent(cn.nukkit.event.Event ev, String funcName) {
+	public static void invokeALL(String funcName, Object... args) {
 		for (IEngineProcessor adapter : adapters) {
-			adapter.invokeALL(funcName, ev);
+			adapter.invokeALL(funcName, args);
 		}
+	}
+
+	public static void invokeEvent(cn.nukkit.event.Event ev, String funcName) {
+		ScriptEngineFacade.invokeALL(funcName, ev);
 	}
 
 	public static void invokeEvent(cn.nukkit.event.Event ev) {

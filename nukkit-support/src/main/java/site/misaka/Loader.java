@@ -55,4 +55,9 @@ public class Loader extends PluginBase {
 			e.printStackTrace();
 		}
 	}
+
+	@Override
+	public void onDisable() {
+		ScriptEngineFacade.invokeALL("finalize");
+	}
 }
