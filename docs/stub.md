@@ -45,7 +45,6 @@ Methods:
   //success ? true : false
   function put(String name, String content) : boolean
   function read(String name) : String
-  function getPath() : String
 ```
 
 ## Field: `parse`
@@ -71,16 +70,7 @@ Methods:
   function createBuilder() : CommandBuilder
   //This command is a compeleted CommandBuilder
   //Demo builder.callback("callback_func").name("commandName").description("Demo command").build()
-  function register(Command arg0) : void
-```
-
-## Field: `ThreadUtils`
-
-Methods:
-
-```php
-  function create(Runnable arg0) : Thread
-  function synchronize(Runnable arg0) : void
+  function register(Command builder) : void
 ```
 
 ## Field: `thread`
