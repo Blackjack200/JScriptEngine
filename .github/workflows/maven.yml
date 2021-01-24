@@ -21,4 +21,8 @@ jobs:
         with:
           java-version: 1.8
       - name: Build with Maven
-        run: mvn -B package --file pom.xml
+        run: bash ./build
+      - uses: actions/upload-artifact@v2
+        with:
+          name: JScriptEngine-ALL
+          path: out
