@@ -26,16 +26,13 @@ public class ScriptLoader {
 				Thread thread = new Thread(() -> {
 					synchronized (processor) {
 						try {
-							EngineAdapter adapter = (EngineAdapter) processor.process(FileUtils.file_get_content(file), UnionData.getProperties(name), new Processor() {
-								@Override
-								public void preprocess(EngineAdapter engine) {
-									engine.put("ds", new DataStructureUtils(Loader.getInstance(), name, engine));
-									engine.put("file", new site.misaka.script.adapter.FileUtils(Loader.getInstance(), name, engine));
-									engine.put("parse", new ParseUtils(Loader.getInstance(), name, engine));
-									engine.put("command", new CommandUtils(Loader.getInstance(), name, engine));
-									engine.put("thread", new ThreadUtils(Loader.getInstance(), name, engine));
-									engine.put("__java__", new JavaUtils(Loader.getInstance(), name, engine));
-								}
+							EngineAdapter adapter = (EngineAdapter) processor.process(FileUtils.file_get_content(file), UnionData.getProperties(name), engine -> {
+								engine.put("ds", new DataStructureUtils(Loader.getInstance(), name, engine));
+								engine.put("file", new site.misaka.script.adapter.FileUtils(Loader.getInstance(), name, engine));
+								engine.put("parse", new ParseUtils(Loader.getInstance(), name, engine));
+								engine.put("command", new CommandUtils(Loader.getInstance(), name, engine));
+								engine.put("thread", new ThreadUtils(Loader.getInstance(), name, engine));
+								engine.put("__java__", new JavaUtils(Loader.getInstance(), name, engine));
 							});
 
 							if (adapter != null) {

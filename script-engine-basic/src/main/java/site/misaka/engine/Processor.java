@@ -1,5 +1,5 @@
 package site.misaka.engine;
 
-public abstract class Processor {
-	public abstract void preprocess(EngineAdapter engine);
+public interface Processor {
+	void preprocess(EngineAdapter engine);
 }
