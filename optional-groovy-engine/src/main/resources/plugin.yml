@@ -1,6 +1,6 @@
 name: NS_GroovySupport
 main: site.misaka.groovy.GroovyLoader
-version: 0.0.3
+version: 0.0.4
 api: 1.0.0
 author: Misaka
 load: STARTUP

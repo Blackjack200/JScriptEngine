@@ -10,6 +10,8 @@ import site.misaka.engine.PSREngineAdapter;
 public class LuaJAdapter extends PSREngineAdapter<LuaScriptEngine> {
 	public LuaJAdapter(LuaScriptEngine engine) {
 		super(engine);
+		this.engine.put("extern", new LuaExternFunction(this.engine));
+		this.engine.put("extern_name", new LuaExternNFunction(this.engine));
 	}
 
 	@Override

@@ -19,6 +19,11 @@ logger.warning("JavaScript")
 function PlayerJoinEvent(event) {
     event.getPlayer().sendMessage("Hello")
 }
+
+extern("java.lang.System")
+System.out.println("TEST")
+extern_name("java.lang.Runtime", "r")
+r.getRuntime().gc()
 ```
 
 ## Groovy
@@ -46,6 +51,11 @@ logger:warning("Lua");
 function PlayerJoinEvent(event)
     event.getPlayer().sendMessage("Hello");
 end
+
+extern("java.lang.System")
+System.out:println("TEST")
+extern_name("java.lang.Runtime", "r")
+r:getRuntime():gc()
 ```
 
 ## Ruby

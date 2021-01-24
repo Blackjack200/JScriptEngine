@@ -74,19 +74,6 @@ Methods:
   function register(Command arg0) : void
 ```
 
-## Field: `str`
-
-Methods:
-
-```php
-  function format(String format, Object... args) : String
-  function replace(String needle, String replacement, String ctx) : String
-  function substring(String start, int end, int ctx) : String
-  function toLower(String ctx) : String
-  function toUpper(String ctx) : String
-  function length(String ctx) : int
-```
-
 ## Field: `ThreadUtils`
 
 Methods:
