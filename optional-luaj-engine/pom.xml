@@ -5,10 +5,11 @@
     <parent>
         <artifactId>NukkitScript</artifactId>
         <groupId>site.misaka</groupId>
-        <version>0.0.3</version>
+        <version>0.0.4</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>optional-luaj-engine</artifactId>
+    <version>0.0.4</version>
 
     <dependencies>
         <dependency>
@@ -19,7 +20,7 @@
         <dependency>
             <groupId>site.misaka</groupId>
             <artifactId>script-engine-basic</artifactId>
-            <version>1.0.0</version>
+            <version>0.0.4</version>
             <scope>provided</scope>
         </dependency>
         <dependency>

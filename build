@@ -11,7 +11,7 @@ rm -rd out
 mkdir out
 # shellcheck disable=SC2061
 find ./* -type f -name optional-*.jar -exec cp -r {} ./out/ \; 2>/dev/null >/dev/null
-cp ./nukkit-support/target/nukkit-support-1.0-SNAPSHOT.jar ./out
+cp ./nukkit-support/target/nukkit-support-*.jar ./out
 echo "[3] Copy Artifacts Success"
 find . -type dir -name target -exec rm -dr {} \; >/dev/null 2>/dev/null
 echo "[*] Clean target directory Success"
