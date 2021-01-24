@@ -1,7 +1,6 @@
 package site.misaka.utils;
 
-import site.misaka.script.adapter.CommandUtils;
-import site.misaka.script.adapter.ParseUtils;
+import site.misaka.script.adapter.*;
 
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
@@ -9,6 +8,24 @@ import java.lang.reflect.Parameter;
 import java.lang.reflect.Type;
 
 public class DocumentGenerator {
+	public static void main(String args[]) {
+		Class clazz = JavaUtils.class;
+		StringBuilder builder = new StringBuilder();
+		builder.append("## Field: `").append(clazz.getSimpleName()).append("`\n\n");
+		builder.append(" Methods: \n");
+		builder.append("```php\n");
+		for (Method method : clazz.getDeclaredMethods()) {
+			int mod = method.getModifiers();
+			if (Modifier.isPublic(mod) && !Modifier.isAbstract(mod)) {
+				builder.append("  function ").append(method.getName()).append("(");
+				builder.append(implode(", ", method.getParameters()));
+				builder.append(") : ").append(method.getReturnType().getSimpleName()).append("\n");
+			}
+		}
+		builder.append("```\n");
+		System.out.println(builder.toString());
+	}
+
 	public static String paramToString(Parameter param) {
 		final StringBuilder sb = new StringBuilder();
 		final Type type = param.getParameterizedType();
@@ -44,23 +61,5 @@ public class DocumentGenerator {
 			}
 		}
 		return builder.toString();
-	}
-
-	public static void main(String args[]) {
-		Class clazz = CommandUtils.class;
-		StringBuilder builder = new StringBuilder();
-		builder.append("## Field: `").append(clazz.getSimpleName()).append("`\n\n");
-		builder.append(" Methods: \n");
-		builder.append("```php\n");
-		for (Method method : clazz.getDeclaredMethods()) {
-			int mod = method.getModifiers();
-			if (Modifier.isPublic(mod) && !Modifier.isAbstract(mod)) {
-				builder.append("  function ").append(method.getName()).append("(");
-				builder.append(implode(", ", method.getParameters()));
-				builder.append(") : ").append(method.getReturnType().getSimpleName()).append("\n");
-			}
-		}
-		builder.append("```\n");
-		System.out.println(builder.toString());
 	}
 }

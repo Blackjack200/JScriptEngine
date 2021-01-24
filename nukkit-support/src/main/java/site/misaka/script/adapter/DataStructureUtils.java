@@ -5,6 +5,8 @@ import site.misaka.engine.EngineAdapter;
 
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
+import java.util.Vector;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class DataStructureUtils extends AbstractUtils {
 	public DataStructureUtils(Plugin plugin, String scriptName, EngineAdapter adapter) {
@@ -25,5 +27,21 @@ public class DataStructureUtils extends AbstractUtils {
 
 	public <T> LinkedList<T> list(T element) {
 		return new LinkedList<>();
+	}
+
+	public ConcurrentHashMap<Object, Object> concurrentMap() {
+		return new ConcurrentHashMap<>();
+	}
+
+	public <KT, VT> ConcurrentHashMap<KT, VT> concurrentMap(KT key, VT value) {
+		return new ConcurrentHashMap<>();
+	}
+
+	public Vector<Object> vector() {
+		return new Vector<>();
+	}
+
+	public <T> Vector<T> vector(T element) {
+		return new Vector<>();
 	}
 }

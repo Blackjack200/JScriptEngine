@@ -31,6 +31,10 @@ Methods:
   function list(T element) : LinkedList<T>
   function map() : LinkedHashMap
   function map(KT key, VT val) : LinkedHashMap<KT, VT>
+  function concurrentMap() : ConcurrentHashMap
+  function concurrentMap(KT key, VT val) : ConcurrentHashMap
+  function vector() : Vector
+  function vector(T element) : Vector
 ```
 
 ## Field: `file`
@@ -68,4 +72,48 @@ Methods:
   //This command is a compeleted CommandBuilder
   //Demo builder.callback("callback_func").name("commandName").description("Demo command").build()
   function register(Command arg0) : void
+```
+
+## Field: `str`
+
+Methods:
+
+```php
+  function format(String format, Object... args) : String
+  function replace(String needle, String replacement, String ctx) : String
+  function substring(String start, int end, int ctx) : String
+  function toLower(String ctx) : String
+  function toUpper(String ctx) : String
+  function length(String ctx) : int
+```
+
+## Field: `ThreadUtils`
+
+Methods:
+
+```php
+  function create(Runnable arg0) : Thread
+  function synchronize(Runnable arg0) : void
+```
+
+## Field: `thread`
+
+Methods:
+
+```php
+  function create(Runnable runnable) : Thread
+  function synchronize(Runnable runnable) : void
+  function aInteger(int i) : AtomicInteger
+  function aLong(long l) : AtomicLong
+  function aDouble(double d) : AtomicDouble
+  function aBoolean(boolean b) : AtomicBoolean
+```
+
+## Field: `__java__`
+
+Methods:
+
+```php
+  function getClass(Object object) : Class
+  function getRuntime() : Runtime
 ```

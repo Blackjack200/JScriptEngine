@@ -18,6 +18,7 @@ public abstract class PSREngineAdapter<T extends ScriptEngine> extends EngineAda
 		try {
 			this.engine.eval(code);
 		} catch (ScriptException e) {
+			e.printStackTrace();
 			return false;
 		}
 		return true;

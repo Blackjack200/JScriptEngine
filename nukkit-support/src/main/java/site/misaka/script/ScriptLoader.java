@@ -6,9 +6,7 @@ import site.misaka.engine.IEngineProcessor;
 import site.misaka.engine.Processor;
 import site.misaka.process.ScriptEngineFacade;
 import site.misaka.process.UnionData;
-import site.misaka.script.adapter.CommandUtils;
-import site.misaka.script.adapter.DataStructureUtils;
-import site.misaka.script.adapter.ParseUtils;
+import site.misaka.script.adapter.*;
 import site.misaka.utils.FileUtils;
 
 import java.io.File;
@@ -35,6 +33,9 @@ public class ScriptLoader {
 									engine.put("file", new site.misaka.script.adapter.FileUtils(Loader.getInstance(), name, engine));
 									engine.put("parse", new ParseUtils(Loader.getInstance(), name, engine));
 									engine.put("command", new CommandUtils(Loader.getInstance(), name, engine));
+									engine.put("str", new StringUtils(Loader.getInstance(), name, engine));
+									engine.put("thread", new ThreadUtils(Loader.getInstance(), name, engine));
+									engine.put("__java__", new JavaUtils(Loader.getInstance(), name, engine));
 								}
 							});
 

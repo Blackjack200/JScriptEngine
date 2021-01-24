@@ -25,25 +25,26 @@ public class Loader extends PluginBase {
 		instance = this;
 		ScriptEngineFacade.init();
 		Map<String, Plugin> plugin = this.getServer().getPluginManager().getPlugins();
-		//硬编码快乐
+
+		//Hardcoded
 		if (plugin.containsKey("NS_JythonSupport")) {
 			ScriptEngineFacade.getAdapters().add(new JythonProcessor());
-			this.getLogger().info("开启Python支持");
+			this.getLogger().info("Enable Python support");
 		}
 
 		if (plugin.containsKey("NS_GroovySupport")) {
 			ScriptEngineFacade.getAdapters().add(new GroovyProcessor(new GroovyScriptEngineFactory()));
-			this.getLogger().info("开启Groovy支持");
+			this.getLogger().info("Enable Groovy support");
 		}
 
 		if (plugin.containsKey("NS_JRubySupport")) {
 			ScriptEngineFacade.getAdapters().add(new JRubyProcessor(new JRubyEngineFactory()));
-			this.getLogger().info("开启Ruby支持");
+			this.getLogger().info("Enable Ruby support");
 		}
 
 		if (plugin.containsKey("NS_LuaJSupport")) {
 			ScriptEngineFacade.getAdapters().add(new LuaJProcessor(new LuaScriptEngineFactory()));
-			this.getLogger().info("开启Lua支持");
+			this.getLogger().info("Enable Lua support");
 		}
 
 		this.getDataFolder().mkdirs();
