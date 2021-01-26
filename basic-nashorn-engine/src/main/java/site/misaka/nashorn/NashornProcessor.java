@@ -1,4 +1,4 @@
-package site.misaka.engine.nashorn;
+package site.misaka.nashorn;
 
 import jdk.nashorn.api.scripting.NashornScriptEngine;
 import jdk.nashorn.api.scripting.NashornScriptEngineFactory;

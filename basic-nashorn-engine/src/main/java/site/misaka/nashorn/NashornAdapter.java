@@ -1,32 +1,32 @@
-package site.misaka.engine.nashorn;
+package site.misaka.nashorn;
 
-import jdk.nashorn.api.scripting.NashornScriptEngine;
+
 import lombok.SneakyThrows;
+import jdk.nashorn.api.scripting.NashornScriptEngine;
 import site.misaka.engine.PSREngineAdapter;
 
 import javax.script.ScriptException;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
-public class NashornAdapter extends PSREngineAdapter<NashornScriptEngine> {
-	protected Class<?> clazz;
+public final class NashornAdapter extends PSREngineAdapter<NashornScriptEngine> {
+	private static Class<?> reflect;
+
+	static {
+		try {
+			reflect = Class.forName("jdk.internal.dynalink.beans.StaticClass");
+		} catch (Throwable ignore) {
+		}
+
+		try {
+			reflect = Class.forName("jdk.dynalink.beans.StaticClass");
+		} catch (Throwable ignore) {
+		}
+	}
 
 	public NashornAdapter(NashornScriptEngine engine) {
 		super(engine);
-		Class<?> clazz = null;
-		try {
-			clazz = Class.forName("jdk.internal.dynalink.beans.StaticClass");
-		} catch (Throwable ignore) {
-
-		}
-		try {
-			clazz = Class.forName("jdk.dynalink.beans.StaticClass");
-		} catch (Throwable ignore) {
-
-		}
-
-		if (clazz != null) {
-			this.clazz = clazz;
+		if (reflect != null) {
 			this.engine.put("extern_name", (BiConsumer<String, String>) this::extern_name);
 			this.engine.put("extern", (Consumer<String>) this::extern);
 		}
@@ -34,7 +34,7 @@ public class NashornAdapter extends PSREngineAdapter<NashornScriptEngine> {
 
 	@SneakyThrows
 	private Object convert(Class<?> clazz) {
-		return this.clazz.getDeclaredMethod("forClass", Class.class).invoke(null, clazz);
+		return reflect.getDeclaredMethod("forClass", Class.class).invoke(null, clazz);
 	}
 
 	@Override

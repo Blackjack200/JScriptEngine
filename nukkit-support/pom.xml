@@ -21,10 +21,11 @@
         </dependency>
         <dependency>
             <groupId>site.misaka</groupId>
-            <artifactId>script-engine-basic</artifactId>
-            <version>0.0.4</version>
+            <artifactId>basic-nashorn-engine</artifactId>
+            <version>0.0.1</version>
             <scope>compile</scope>
         </dependency>
+        
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>

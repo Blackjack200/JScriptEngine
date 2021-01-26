@@ -12,6 +12,7 @@ import site.misaka.jruby.JRubyProcessor;
 import site.misaka.luaj.LuaJProcessor;
 import site.misaka.process.ScriptEngineFacade;
 import site.misaka.script.ScriptLoader;
+import site.misaka.utils.MetricsLite;
 
 import java.io.IOException;
 import java.util.Map;
@@ -54,6 +55,8 @@ public class Loader extends PluginBase {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+
+		MetricsLite lite = new MetricsLite(this, 10110);
 	}
 
 	@Override

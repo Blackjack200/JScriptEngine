@@ -9,6 +9,6 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>script-engine-basic</artifactId>
+    <artifactId>basic-script-engine</artifactId>
     <version>0.0.4</version>
 </project>

@@ -45,6 +45,10 @@ Methods:
   //success ? true : false
   function put(String name, String content) : boolean
   function read(String name) : String
+  function touch(String name) : boolean
+  function mkdir(String name) : boolean
+  function remove(String name) : void
+  function getPath() : String
 ```
 
 ## Field: `parse`

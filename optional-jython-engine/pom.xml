@@ -19,7 +19,7 @@
         </dependency>
         <dependency>
             <groupId>site.misaka</groupId>
-            <artifactId>script-engine-basic</artifactId>
+            <artifactId>basic-script-engine</artifactId>
             <version>0.0.4</version>
             <scope>provided</scope>
         </dependency>

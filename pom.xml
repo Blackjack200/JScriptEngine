@@ -10,12 +10,13 @@
     <version>0.0.4</version>
 
     <modules>
-        <module>script-engine-basic</module>
+        <module>basic-script-engine</module>
         <module>nukkit-support</module>
         <module>optional-luaj-engine</module>
         <module>optional-jython-engine</module>
         <module>optional-jruby-engine</module>
         <module>optional-groovy-engine</module>
+        <module>basic-nashorn-engine</module>
     </modules>
 
     <properties>
