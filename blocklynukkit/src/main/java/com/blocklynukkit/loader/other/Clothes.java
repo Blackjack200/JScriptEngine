@@ -1,0 +1,513 @@
+package com.blocklynukkit.loader.other;
+
+import cn.nukkit.Server;
+import cn.nukkit.entity.data.Skin;
+import cn.nukkit.utils.Config;
+import com.blocklynukkit.loader.Loader;
+import com.blocklynukkit.loader.UnionData;
+
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.util.Map;
+import java.util.UUID;
+
+public class Clothes {
+    public String skinname;
+    public String playername;
+    public Skin skin;
+    public String gen = null;
+
+    public Clothes(String skid, String p) {
+        skinname = skid;
+        playername = p;
+        skin = Server.getInstance().getPlayer(playername).getSkin();
+    }
+
+    public Clothes(String skid) {
+        skinname = skid;
+        playername = "BlocklyNukkit";
+        skin = new Skin();
+        skin.setGeometryData(this.steveModal);
+    }
+
+    public Skin build() {
+        skin.setSkinId(skinname);
+        skin.setTrusted(true);
+        try {
+            File fileskin = new File(Loader.plugin.getDataFolder() + "/skin/" + skinname + ".png");
+            if (fileskin.exists()) {
+                if (UnionData.skinImageMap.get(skinname) != null) {
+                    skin.setSkinData(UnionData.skinImageMap.get(skinname));
+                } else {
+                    BufferedImage bi = ImageIO.read(fileskin);
+                    skin.setSkinData(bi);
+                    UnionData.skinImageMap.put(skinname, bi);
+                }
+                File filegeo = new File(Loader.plugin.getDataFolder() + "/skin/" + skinname + ".json");
+                if (UnionData.playerGeoNameMap.get(skinname) != null) {
+                    skin.setGeometryName(UnionData.playerGeoNameMap.get(skinname));
+                    gen = UnionData.playerGeoNameMap.get(skinname);
+                } else {
+                    if (filegeo.exists()) {
+                        Map<String, Object> skinJson = (new Config(Loader.plugin.getDataFolder() + "/skin/" + skinname + ".json", Config.JSON)).getAll();
+                        String geometryName = null;
+                        for (Map.Entry<String, Object> entry1 : skinJson.entrySet()) {
+                            if (geometryName == null) {
+                                geometryName = entry1.getKey();
+                                gen = geometryName;
+                            }
+                        }
+                        UnionData.playerGeoNameMap.put(skinname, geometryName);
+                        skin.setGeometryName(geometryName);
+                    } else {
+                        skin.setGeometryName("geometry.humanoid.customSlim");
+                        gen = "geometry.humanoid.customSlim";
+                    }
+                }
+                if (UnionData.playerGeoJsonMap.get(skinname) != null) {
+                    skin.setGeometryData(UnionData.playerGeoJsonMap.get(skinname));
+                } else {
+                    if (filegeo.exists()) {
+                        BufferedReader reader = new BufferedReader(new FileReader(filegeo));
+                        String geotext = "";
+                        for (String line = reader.readLine(); line != null; line = reader.readLine()) {
+                            geotext += line;
+                        }
+                        reader.close();
+                        UnionData.playerGeoJsonMap.put(skinname, geotext);
+                        skin.setGeometryData(geotext);
+                    }
+                }
+//                byte[] data = Binary.appendBytes(skin.getSkinData().data, new byte[][]{skin.getSkinResourcePatch().getBytes(StandardCharsets.UTF_8)});
+//                skin.setSkinId(UUID.nameUUIDFromBytes(data) + "." + skinname);
+                skin.setSkinId(UUID.randomUUID() + "." + skinname);
+                return skin;
+            } else {
+                Loader.getPluginLogger().warning("没有该皮肤！");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return skin;
+    }
+
+    public String steveModal = "{\n" +
+            "   \"format_version\" : \"1.12.0\",\n" +
+            "   \"minecraft:geometry\" : [\n" +
+            "      {\n" +
+            "         \"bones\" : [\n" +
+            "            {\n" +
+            "               \"name\" : \"body\",\n" +
+            "               \"parent\" : \"waist\",\n" +
+            "               \"pivot\" : [ 0.0, 24.0, 0.0 ]\n" +
+            "            },\n" +
+            "            {\n" +
+            "               \"name\" : \"waist\",\n" +
+            "               \"pivot\" : [ 0.0, 12.0, 0.0 ]\n" +
+            "            },\n" +
+            "            {\n" +
+            "               \"cubes\" : [\n" +
+            "                  {\n" +
+            "                     \"origin\" : [ -5.0, 8.0, 3.0 ],\n" +
+            "                     \"size\" : [ 10, 16, 1 ],\n" +
+            "                     \"uv\" : [ 0, 0 ]\n" +
+            "                  }\n" +
+            "               ],\n" +
+            "               \"name\" : \"cape\",\n" +
+            "               \"parent\" : \"body\",\n" +
+            "               \"pivot\" : [ 0.0, 24.0, 3.0 ],\n" +
+            "               \"rotation\" : [ 0.0, 180.0, 0.0 ]\n" +
+            "            }\n" +
+            "         ],\n" +
+            "         \"description\" : {\n" +
+            "            \"identifier\" : \"geometry.cape\",\n" +
+            "            \"texture_height\" : 32,\n" +
+            "            \"texture_width\" : 64\n" +
+            "         }\n" +
+            "      },\n" +
+            "      {\n" +
+            "         \"bones\" : [\n" +
+            "            {\n" +
+            "               \"name\" : \"root\",\n" +
+            "               \"pivot\" : [ 0.0, 0.0, 0.0 ]\n" +
+            "            },\n" +
+            "            {\n" +
+            "               \"cubes\" : [\n" +
+            "                  {\n" +
+            "                     \"origin\" : [ -4.0, 12.0, -2.0 ],\n" +
+            "                     \"size\" : [ 8, 12, 4 ],\n" +
+            "                     \"uv\" : [ 16, 16 ]\n" +
+            "                  }\n" +
+            "               ],\n" +
+            "               \"name\" : \"body\",\n" +
+            "               \"parent\" : \"waist\",\n" +
+            "               \"pivot\" : [ 0.0, 24.0, 0.0 ]\n" +
+            "            },\n" +
+            "            {\n" +
+            "               \"name\" : \"waist\",\n" +
+            "               \"parent\" : \"root\",\n" +
+            "               \"pivot\" : [ 0.0, 12.0, 0.0 ]\n" +
+            "            },\n" +
+            "            {\n" +
+            "               \"cubes\" : [\n" +
+            "                  {\n" +
+            "                     \"origin\" : [ -4.0, 24.0, -4.0 ],\n" +
+            "                     \"size\" : [ 8, 8, 8 ],\n" +
+            "                     \"uv\" : [ 0, 0 ]\n" +
+            "                  }\n" +
+            "               ],\n" +
+            "               \"name\" : \"head\",\n" +
+            "               \"parent\" : \"body\",\n" +
+            "               \"pivot\" : [ 0.0, 24.0, 0.0 ]\n" +
+            "            },\n" +
+            "            {\n" +
+            "               \"name\" : \"cape\",\n" +
+            "               \"parent\" : \"body\",\n" +
+            "               \"pivot\" : [ 0.0, 24, 3.0 ]\n" +
+            "            },\n" +
+            "            {\n" +
+            "               \"cubes\" : [\n" +
+            "                  {\n" +
+            "                     \"inflate\" : 0.50,\n" +
+            "                     \"origin\" : [ -4.0, 24.0, -4.0 ],\n" +
+            "                     \"size\" : [ 8, 8, 8 ],\n" +
+            "                     \"uv\" : [ 32, 0 ]\n" +
+            "                  }\n" +
+            "               ],\n" +
+            "               \"name\" : \"hat\",\n" +
+            "               \"parent\" : \"head\",\n" +
+            "               \"pivot\" : [ 0.0, 24.0, 0.0 ]\n" +
+            "            },\n" +
+            "            {\n" +
+            "               \"cubes\" : [\n" +
+            "                  {\n" +
+            "                     \"origin\" : [ 4.0, 12.0, -2.0 ],\n" +
+            "                     \"size\" : [ 4, 12, 4 ],\n" +
+            "                     \"uv\" : [ 32, 48 ]\n" +
+            "                  }\n" +
+            "               ],\n" +
+            "               \"name\" : \"leftArm\",\n" +
+            "               \"parent\" : \"body\",\n" +
+            "               \"pivot\" : [ 5.0, 22.0, 0.0 ]\n" +
+            "            },\n" +
+            "            {\n" +
+            "               \"cubes\" : [\n" +
+            "                  {\n" +
+            "                     \"inflate\" : 0.250,\n" +
+            "                     \"origin\" : [ 4.0, 12.0, -2.0 ],\n" +
+            "                     \"size\" : [ 4, 12, 4 ],\n" +
+            "                     \"uv\" : [ 48, 48 ]\n" +
+            "                  }\n" +
+            "               ],\n" +
+            "               \"name\" : \"leftSleeve\",\n" +
+            "               \"parent\" : \"leftArm\",\n" +
+            "               \"pivot\" : [ 5.0, 22.0, 0.0 ]\n" +
+            "            },\n" +
+            "            {\n" +
+            "               \"name\" : \"leftItem\",\n" +
+            "               \"parent\" : \"leftArm\",\n" +
+            "               \"pivot\" : [ 6.0, 15.0, 1.0 ]\n" +
+            "            },\n" +
+            "            {\n" +
+            "               \"cubes\" : [\n" +
+            "                  {\n" +
+            "                     \"origin\" : [ -8.0, 12.0, -2.0 ],\n" +
+            "                     \"size\" : [ 4, 12, 4 ],\n" +
+            "                     \"uv\" : [ 40, 16 ]\n" +
+            "                  }\n" +
+            "               ],\n" +
+            "               \"name\" : \"rightArm\",\n" +
+            "               \"parent\" : \"body\",\n" +
+            "               \"pivot\" : [ -5.0, 22.0, 0.0 ]\n" +
+            "            },\n" +
+            "            {\n" +
+            "               \"cubes\" : [\n" +
+            "                  {\n" +
+            "                     \"inflate\" : 0.250,\n" +
+            "                     \"origin\" : [ -8.0, 12.0, -2.0 ],\n" +
+            "                     \"size\" : [ 4, 12, 4 ],\n" +
+            "                     \"uv\" : [ 40, 32 ]\n" +
+            "                  }\n" +
+            "               ],\n" +
+            "               \"name\" : \"rightSleeve\",\n" +
+            "               \"parent\" : \"rightArm\",\n" +
+            "               \"pivot\" : [ -5.0, 22.0, 0.0 ]\n" +
+            "            },\n" +
+            "            {\n" +
+            "               \"locators\" : {\n" +
+            "                  \"lead_hold\" : [ -6, 15, 1 ]\n" +
+            "               },\n" +
+            "               \"name\" : \"rightItem\",\n" +
+            "               \"parent\" : \"rightArm\",\n" +
+            "               \"pivot\" : [ -6, 15, 1 ]\n" +
+            "            },\n" +
+            "            {\n" +
+            "               \"cubes\" : [\n" +
+            "                  {\n" +
+            "                     \"origin\" : [ -0.10, 0.0, -2.0 ],\n" +
+            "                     \"size\" : [ 4, 12, 4 ],\n" +
+            "                     \"uv\" : [ 16, 48 ]\n" +
+            "                  }\n" +
+            "               ],\n" +
+            "               \"name\" : \"leftLeg\",\n" +
+            "               \"parent\" : \"root\",\n" +
+            "               \"pivot\" : [ 1.90, 12.0, 0.0 ]\n" +
+            "            },\n" +
+            "            {\n" +
+            "               \"cubes\" : [\n" +
+            "                  {\n" +
+            "                     \"inflate\" : 0.250,\n" +
+            "                     \"origin\" : [ -0.10, 0.0, -2.0 ],\n" +
+            "                     \"size\" : [ 4, 12, 4 ],\n" +
+            "                     \"uv\" : [ 0, 48 ]\n" +
+            "                  }\n" +
+            "               ],\n" +
+            "               \"name\" : \"leftPants\",\n" +
+            "               \"parent\" : \"leftLeg\",\n" +
+            "               \"pivot\" : [ 1.90, 12.0, 0.0 ]\n" +
+            "            },\n" +
+            "            {\n" +
+            "               \"cubes\" : [\n" +
+            "                  {\n" +
+            "                     \"origin\" : [ -3.90, 0.0, -2.0 ],\n" +
+            "                     \"size\" : [ 4, 12, 4 ],\n" +
+            "                     \"uv\" : [ 0, 16 ]\n" +
+            "                  }\n" +
+            "               ],\n" +
+            "               \"name\" : \"rightLeg\",\n" +
+            "               \"parent\" : \"root\",\n" +
+            "               \"pivot\" : [ -1.90, 12.0, 0.0 ]\n" +
+            "            },\n" +
+            "            {\n" +
+            "               \"cubes\" : [\n" +
+            "                  {\n" +
+            "                     \"inflate\" : 0.250,\n" +
+            "                     \"origin\" : [ -3.90, 0.0, -2.0 ],\n" +
+            "                     \"size\" : [ 4, 12, 4 ],\n" +
+            "                     \"uv\" : [ 0, 32 ]\n" +
+            "                  }\n" +
+            "               ],\n" +
+            "               \"name\" : \"rightPants\",\n" +
+            "               \"parent\" : \"rightLeg\",\n" +
+            "               \"pivot\" : [ -1.90, 12.0, 0.0 ]\n" +
+            "            },\n" +
+            "            {\n" +
+            "               \"cubes\" : [\n" +
+            "                  {\n" +
+            "                     \"inflate\" : 0.250,\n" +
+            "                     \"origin\" : [ -4.0, 12.0, -2.0 ],\n" +
+            "                     \"size\" : [ 8, 12, 4 ],\n" +
+            "                     \"uv\" : [ 16, 32 ]\n" +
+            "                  }\n" +
+            "               ],\n" +
+            "               \"name\" : \"jacket\",\n" +
+            "               \"parent\" : \"body\",\n" +
+            "               \"pivot\" : [ 0.0, 24.0, 0.0 ]\n" +
+            "            }\n" +
+            "         ],\n" +
+            "         \"description\" : {\n" +
+            "            \"identifier\" : \"geometry.humanoid.custom\",\n" +
+            "            \"texture_height\" : 64,\n" +
+            "            \"texture_width\" : 64,\n" +
+            "            \"visible_bounds_height\" : 2,\n" +
+            "            \"visible_bounds_offset\" : [ 0, 1, 0 ],\n" +
+            "            \"visible_bounds_width\" : 1\n" +
+            "         }\n" +
+            "      },\n" +
+            "      {\n" +
+            "         \"bones\" : [\n" +
+            "            {\n" +
+            "               \"name\" : \"root\",\n" +
+            "               \"pivot\" : [ 0.0, 0.0, 0.0 ]\n" +
+            "            },\n" +
+            "            {\n" +
+            "               \"name\" : \"waist\",\n" +
+            "               \"parent\" : \"root\",\n" +
+            "               \"pivot\" : [ 0.0, 12.0, 0.0 ]\n" +
+            "            },\n" +
+            "            {\n" +
+            "               \"cubes\" : [\n" +
+            "                  {\n" +
+            "                     \"origin\" : [ -4.0, 12.0, -2.0 ],\n" +
+            "                     \"size\" : [ 8, 12, 4 ],\n" +
+            "                     \"uv\" : [ 16, 16 ]\n" +
+            "                  }\n" +
+            "               ],\n" +
+            "               \"name\" : \"body\",\n" +
+            "               \"parent\" : \"waist\",\n" +
+            "               \"pivot\" : [ 0.0, 24.0, 0.0 ]\n" +
+            "            },\n" +
+            "            {\n" +
+            "               \"cubes\" : [\n" +
+            "                  {\n" +
+            "                     \"origin\" : [ -4.0, 24.0, -4.0 ],\n" +
+            "                     \"size\" : [ 8, 8, 8 ],\n" +
+            "                     \"uv\" : [ 0, 0 ]\n" +
+            "                  }\n" +
+            "               ],\n" +
+            "               \"name\" : \"head\",\n" +
+            "               \"parent\" : \"body\",\n" +
+            "               \"pivot\" : [ 0.0, 24.0, 0.0 ]\n" +
+            "            },\n" +
+            "            {\n" +
+            "               \"cubes\" : [\n" +
+            "                  {\n" +
+            "                     \"inflate\" : 0.50,\n" +
+            "                     \"origin\" : [ -4.0, 24.0, -4.0 ],\n" +
+            "                     \"size\" : [ 8, 8, 8 ],\n" +
+            "                     \"uv\" : [ 32, 0 ]\n" +
+            "                  }\n" +
+            "               ],\n" +
+            "               \"name\" : \"hat\",\n" +
+            "               \"parent\" : \"head\",\n" +
+            "               \"pivot\" : [ 0.0, 24.0, 0.0 ]\n" +
+            "            },\n" +
+            "            {\n" +
+            "               \"cubes\" : [\n" +
+            "                  {\n" +
+            "                     \"origin\" : [ -3.90, 0.0, -2.0 ],\n" +
+            "                     \"size\" : [ 4, 12, 4 ],\n" +
+            "                     \"uv\" : [ 0, 16 ]\n" +
+            "                  }\n" +
+            "               ],\n" +
+            "               \"name\" : \"rightLeg\",\n" +
+            "               \"parent\" : \"root\",\n" +
+            "               \"pivot\" : [ -1.90, 12.0, 0.0 ]\n" +
+            "            },\n" +
+            "            {\n" +
+            "               \"cubes\" : [\n" +
+            "                  {\n" +
+            "                     \"inflate\" : 0.250,\n" +
+            "                     \"origin\" : [ -3.90, 0.0, -2.0 ],\n" +
+            "                     \"size\" : [ 4, 12, 4 ],\n" +
+            "                     \"uv\" : [ 0, 32 ]\n" +
+            "                  }\n" +
+            "               ],\n" +
+            "               \"name\" : \"rightPants\",\n" +
+            "               \"parent\" : \"rightLeg\",\n" +
+            "               \"pivot\" : [ -1.90, 12.0, 0.0 ]\n" +
+            "            },\n" +
+            "            {\n" +
+            "               \"cubes\" : [\n" +
+            "                  {\n" +
+            "                     \"origin\" : [ -0.10, 0.0, -2.0 ],\n" +
+            "                     \"size\" : [ 4, 12, 4 ],\n" +
+            "                     \"uv\" : [ 16, 48 ]\n" +
+            "                  }\n" +
+            "               ],\n" +
+            "               \"mirror\" : true,\n" +
+            "               \"name\" : \"leftLeg\",\n" +
+            "               \"parent\" : \"root\",\n" +
+            "               \"pivot\" : [ 1.90, 12.0, 0.0 ]\n" +
+            "            },\n" +
+            "            {\n" +
+            "               \"cubes\" : [\n" +
+            "                  {\n" +
+            "                     \"inflate\" : 0.250,\n" +
+            "                     \"origin\" : [ -0.10, 0.0, -2.0 ],\n" +
+            "                     \"size\" : [ 4, 12, 4 ],\n" +
+            "                     \"uv\" : [ 0, 48 ]\n" +
+            "                  }\n" +
+            "               ],\n" +
+            "               \"name\" : \"leftPants\",\n" +
+            "               \"parent\" : \"leftLeg\",\n" +
+            "               \"pivot\" : [ 1.90, 12.0, 0.0 ]\n" +
+            "            },\n" +
+            "            {\n" +
+            "               \"cubes\" : [\n" +
+            "                  {\n" +
+            "                     \"origin\" : [ 4.0, 11.50, -2.0 ],\n" +
+            "                     \"size\" : [ 3, 12, 4 ],\n" +
+            "                     \"uv\" : [ 32, 48 ]\n" +
+            "                  }\n" +
+            "               ],\n" +
+            "               \"name\" : \"leftArm\",\n" +
+            "               \"parent\" : \"body\",\n" +
+            "               \"pivot\" : [ 5.0, 21.50, 0.0 ]\n" +
+            "            },\n" +
+            "            {\n" +
+            "               \"cubes\" : [\n" +
+            "                  {\n" +
+            "                     \"inflate\" : 0.250,\n" +
+            "                     \"origin\" : [ 4.0, 11.50, -2.0 ],\n" +
+            "                     \"size\" : [ 3, 12, 4 ],\n" +
+            "                     \"uv\" : [ 48, 48 ]\n" +
+            "                  }\n" +
+            "               ],\n" +
+            "               \"name\" : \"leftSleeve\",\n" +
+            "               \"parent\" : \"leftArm\",\n" +
+            "               \"pivot\" : [ 5.0, 21.50, 0.0 ]\n" +
+            "            },\n" +
+            "            {\n" +
+            "               \"name\" : \"leftItem\",\n" +
+            "               \"parent\" : \"leftArm\",\n" +
+            "               \"pivot\" : [ 6, 14.50, 1 ]\n" +
+            "            },\n" +
+            "            {\n" +
+            "               \"cubes\" : [\n" +
+            "                  {\n" +
+            "                     \"origin\" : [ -7.0, 11.50, -2.0 ],\n" +
+            "                     \"size\" : [ 3, 12, 4 ],\n" +
+            "                     \"uv\" : [ 40, 16 ]\n" +
+            "                  }\n" +
+            "               ],\n" +
+            "               \"name\" : \"rightArm\",\n" +
+            "               \"parent\" : \"body\",\n" +
+            "               \"pivot\" : [ -5.0, 21.50, 0.0 ]\n" +
+            "            },\n" +
+            "            {\n" +
+            "               \"cubes\" : [\n" +
+            "                  {\n" +
+            "                     \"inflate\" : 0.250,\n" +
+            "                     \"origin\" : [ -7.0, 11.50, -2.0 ],\n" +
+            "                     \"size\" : [ 3, 12, 4 ],\n" +
+            "                     \"uv\" : [ 40, 32 ]\n" +
+            "                  }\n" +
+            "               ],\n" +
+            "               \"name\" : \"rightSleeve\",\n" +
+            "               \"parent\" : \"rightArm\",\n" +
+            "               \"pivot\" : [ -5.0, 21.50, 0.0 ]\n" +
+            "            },\n" +
+            "            {\n" +
+            "               \"locators\" : {\n" +
+            "                  \"lead_hold\" : [ -6, 14.50, 1 ]\n" +
+            "               },\n" +
+            "               \"name\" : \"rightItem\",\n" +
+            "               \"parent\" : \"rightArm\",\n" +
+            "               \"pivot\" : [ -6, 14.50, 1 ]\n" +
+            "            },\n" +
+            "            {\n" +
+            "               \"cubes\" : [\n" +
+            "                  {\n" +
+            "                     \"inflate\" : 0.250,\n" +
+            "                     \"origin\" : [ -4.0, 12.0, -2.0 ],\n" +
+            "                     \"size\" : [ 8, 12, 4 ],\n" +
+            "                     \"uv\" : [ 16, 32 ]\n" +
+            "                  }\n" +
+            "               ],\n" +
+            "               \"name\" : \"jacket\",\n" +
+            "               \"parent\" : \"body\",\n" +
+            "               \"pivot\" : [ 0.0, 24.0, 0.0 ]\n" +
+            "            },\n" +
+            "            {\n" +
+            "               \"name\" : \"cape\",\n" +
+            "               \"parent\" : \"body\",\n" +
+            "               \"pivot\" : [ 0.0, 24, -3.0 ]\n" +
+            "            }\n" +
+            "         ],\n" +
+            "         \"description\" : {\n" +
+            "            \"identifier\" : \"geometry.humanoid.customSlim\",\n" +
+            "            \"texture_height\" : 64,\n" +
+            "            \"texture_width\" : 64,\n" +
+            "            \"visible_bounds_height\" : 2,\n" +
+            "            \"visible_bounds_offset\" : [ 0, 1, 0 ],\n" +
+            "            \"visible_bounds_width\" : 1\n" +
+            "         }\n" +
+            "      }\n" +
+            "   ]\n" +
+            "}\n";
+}

@@ -1,0 +1,21 @@
+﻿name: BlocklyNukkit
+main: com.blocklynukkit.loader.Loader
+version: "0.0.1"
+author: BlocklyNukkit开发组-超神的冰凉发起(BlocklyNukkit_Developers)
+authors:
+  - 超神的冰凉
+  - 企鹅队长
+api: [ "1.0.8" ]
+description: JSE_BlocklyNukkit
+load: POSTWORLD
+softdepend:
+  - PlaceholderAPI
+  - EconomyAPI
+  - ScoreboardPlugin
+  - FakeInventories
+  - Tips
+  - PyBN
+  - GameAPI
+  - miraiBN
+
+#声明：blocklynukkit使用的红石音乐引擎转制自bukkit版本

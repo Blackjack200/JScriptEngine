@@ -9,7 +9,7 @@ import javax.script.ScriptException;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
-public final class NashornAdapter extends PSREngineAdapter<NashornScriptEngine> {
+public class NashornAdapter extends PSREngineAdapter<NashornScriptEngine> {
 	private static Class<?> reflect;
 
 	static {
