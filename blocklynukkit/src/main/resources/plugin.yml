@@ -1,14 +1,7 @@
 ﻿name: BlocklyNukkit
-main: BlocklyNukkit
+main: site.misaka.blocklynukkit.BlocklyNukkit
 version: "0.0.1"
-author: "?"
+author: "Misaka"
 api: [ "1.0.8" ]
 description: JSE_BlocklyNukkit
-load: POSTWORLD
-softdepend:
-  - PlaceholderAPI
-  - EconomyAPI
-  - ScoreboardPlugin
-  - FakeInventories
-  - Tips
-  - GameAPI
+load: STARTUP
