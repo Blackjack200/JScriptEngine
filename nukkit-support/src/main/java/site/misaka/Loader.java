@@ -1,5 +1,6 @@
 package site.misaka;
 
+import cn.nukkit.entity.Entity;
 import cn.nukkit.plugin.Plugin;
 import cn.nukkit.plugin.PluginBase;
 import lombok.Getter;
@@ -10,8 +11,9 @@ import site.misaka.groovy.GroovyProcessor;
 import site.misaka.jpython.JythonProcessor;
 import site.misaka.jruby.JRubyProcessor;
 import site.misaka.luaj.LuaJProcessor;
-import site.misaka.process.ScriptEngineFacade;
+import site.misaka.script.EngineFacade;
 import site.misaka.script.ScriptLoader;
+import site.misaka.script.object.slapper.HumanSlapper;
 import site.misaka.utils.MetricsLite;
 
 import java.io.IOException;
@@ -24,43 +26,46 @@ public class Loader extends PluginBase {
 	@Override
 	public void onEnable() {
 		instance = this;
-		ScriptEngineFacade.init();
+		EngineFacade.init();
 		Map<String, Plugin> plugin = this.getServer().getPluginManager().getPlugins();
 
 		//Hardcoded
 		if (plugin.containsKey("NS_JythonSupport")) {
-			ScriptEngineFacade.getAdapters().add(new JythonProcessor());
+			EngineFacade.getAdapters().add(new JythonProcessor());
 			this.getLogger().info("Enable Python support");
 		}
 
 		if (plugin.containsKey("NS_GroovySupport")) {
-			ScriptEngineFacade.getAdapters().add(new GroovyProcessor(new GroovyScriptEngineFactory()));
+			EngineFacade.getAdapters().add(new GroovyProcessor(new GroovyScriptEngineFactory()));
 			this.getLogger().info("Enable Groovy support");
 		}
 
 		if (plugin.containsKey("NS_JRubySupport")) {
-			ScriptEngineFacade.getAdapters().add(new JRubyProcessor(new JRubyEngineFactory()));
+			EngineFacade.getAdapters().add(new JRubyProcessor(new JRubyEngineFactory()));
 			this.getLogger().info("Enable Ruby support");
 		}
 
 		if (plugin.containsKey("NS_LuaJSupport")) {
-			ScriptEngineFacade.getAdapters().add(new LuaJProcessor(new LuaScriptEngineFactory()));
+			EngineFacade.getAdapters().add(new LuaJProcessor(new LuaScriptEngineFactory()));
 			this.getLogger().info("Enable Lua support");
 		}
 
 		this.getDataFolder().mkdirs();
+
+		MetricsLite lite = new MetricsLite(this, 10110);
+
+		Entity.registerEntity("JSE_NPC", HumanSlapper.class);
+		System.setProperty("nashorn.args", "--language=es6");
 
 		try {
 			ScriptLoader.scanLoader(this.getDataFolder().toPath());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
-		MetricsLite lite = new MetricsLite(this, 10110);
 	}
 
 	@Override
 	public void onDisable() {
-		ScriptEngineFacade.invokeALL("finalize");
+		EngineFacade.invokeALL("finalize");
 	}
 }

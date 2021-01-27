@@ -34,12 +34,12 @@ public class ScriptLoader {
                                 engine.put("blockitem", new BlockItem(BlocklyNukkit.getInstance(), name, engine));
                                 engine.put("algorithm", new Algorithm(BlocklyNukkit.getInstance(), name, engine));
                                 engine.put("inventory", new Inventory(BlocklyNukkit.getInstance(), name, engine));
-                                //TODO world
-                                //TODO entity
-                                //TODO database
-                                //TODO noteMusic
                                 //TODO window
                                 //TODO particle
+                                //TODO entity
+                                //TODO noteMusic
+                                //TODO world
+                                //TODO database
                             });
 
                             if (adapter != null) {

@@ -1,6 +1,6 @@
 package site.misaka.utils;
 
-import site.misaka.script.adapter.FileUtils;
+import site.misaka.script.object.FileObject;
 
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
@@ -9,7 +9,7 @@ import java.lang.reflect.Type;
 
 public class DocumentGenerator {
 	public static void main(String args[]) {
-		Class clazz = FileUtils.class;
+		Class clazz = FileObject.class;
 		StringBuilder builder = new StringBuilder();
 		builder.append("## Field: `").append(clazz.getSimpleName()).append("`\n\n");
 		builder.append(" Methods: \n");

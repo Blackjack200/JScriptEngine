@@ -1,10 +1,10 @@
-package site.misaka.script.adapter;
+package site.misaka.script.object;
 
 import cn.nukkit.plugin.Plugin;
 import site.misaka.engine.EngineAdapter;
 
-public class JavaUtils extends AbstractUtils {
-	public JavaUtils(Plugin plugin, String scriptName, EngineAdapter adapter) {
+public class JavaObject extends AbstractObject {
+	public JavaObject(Plugin plugin, String scriptName, EngineAdapter adapter) {
 		super(plugin, scriptName, adapter);
 	}
 

@@ -1,12 +1,11 @@
-package site.misaka.process;
+package site.misaka.script;
 
 import cn.nukkit.Server;
 import lombok.Getter;
 import site.misaka.Loader;
 import site.misaka.engine.EngineAdapter;
-import site.misaka.script.ScriptLogger;
-import site.misaka.script.adapter.CallBackCommand;
-import site.misaka.script.adapter.builder.Command;
+import site.misaka.script.object.command.CallBackCommand;
+import site.misaka.script.object.command.CommandInfo;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -21,7 +20,7 @@ public class UnionData {
 	@Getter
 	private static final ConcurrentHashMap<String, EngineAdapter> scripts = new ConcurrentHashMap<>();
 	@Getter
-	private static final ConcurrentHashMap<Command, CallBackCommand> commandMap = new ConcurrentHashMap<>();
+	private static final ConcurrentHashMap<CommandInfo, CallBackCommand> commandMap = new ConcurrentHashMap<>();
 
 	public static Map<String, Object> getProperties(String scriptName) {
 		LinkedHashMap<String, Object> map = new LinkedHashMap<>();

@@ -49,13 +49,6 @@ Methods:
   function mkdir(String name) : boolean
   function remove(String name) : void
   function getPath() : String
-```
-
-## Field: `parse`
-
-Methods:
-
-```php
   function emitYAML(Object data) : String
   function parseYAML(String content) : Object
   function parseJSON(String data) : Object
@@ -75,19 +68,6 @@ Methods:
   //This command is a compeleted CommandBuilder
   //Demo builder.callback("callback_func").name("commandName").description("Demo command").build()
   function register(Command builder) : void
-```
-
-## Field: `thread`
-
-Methods:
-
-```php
-  function create(Runnable runnable) : Thread
-  function synchronize(Runnable runnable) : void
-  function aInteger(int i) : AtomicInteger
-  function aLong(long l) : AtomicLong
-  function aDouble(double d) : AtomicDouble
-  function aBoolean(boolean b) : AtomicBoolean
 ```
 
 ## Field: `__java__`

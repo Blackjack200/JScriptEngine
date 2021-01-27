@@ -1,8 +1,10 @@
-package site.misaka.script.adapter;
+package site.misaka.script.object;
 
 import cn.nukkit.plugin.Plugin;
+import com.alibaba.fastjson.JSON;
 import lombok.Getter;
 import lombok.SneakyThrows;
+import org.yaml.snakeyaml.Yaml;
 import site.misaka.engine.EngineAdapter;
 
 import java.io.BufferedWriter;
@@ -15,15 +17,33 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.attribute.BasicFileAttributes;
 
-public class FileUtils extends AbstractUtils {
+public class FileObject extends AbstractObject {
 	@Getter
 	private final String path;
 
-	public FileUtils(Plugin plugin, String scriptName, EngineAdapter adapter) {
+	public FileObject(Plugin plugin, String scriptName, EngineAdapter adapter) {
 		super(plugin, scriptName, adapter);
 		this.path = plugin.getDataFolder().getAbsoluteFile() + File.separator + scriptName.replace(".", "-") + File.separator;
 		File file = new File(this.path);
 		file.mkdirs();
+	}
+
+	public Object parseYAML(String content) {
+		Yaml yaml = new Yaml();
+		return yaml.load(content);
+	}
+
+	public String emitYAML(Object data) {
+		Yaml yaml = new Yaml();
+		return yaml.dump(data);
+	}
+
+	public Object parseJSON(String content) {
+		return JSON.parse(content);
+	}
+
+	public String emitJSON(Object data) {
+		return JSON.toJSONString(data);
 	}
 
 	public String read(String path) {

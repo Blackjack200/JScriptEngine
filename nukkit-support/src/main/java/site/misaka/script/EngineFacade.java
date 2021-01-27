@@ -1,17 +1,17 @@
-package site.misaka.process;
+package site.misaka.script;
 
-import lombok.Getter;
 import jdk.nashorn.api.scripting.NashornScriptEngineFactory;
+import lombok.Getter;
 import site.misaka.Loader;
 import site.misaka.engine.IEngineProcessor;
 import site.misaka.nashorn.NashornProcessor;
-import site.misaka.process.listener.BasicEventListener;
 
 import java.util.ArrayList;
+import java.util.Vector;
 
-public class ScriptEngineFacade {
+public class EngineFacade {
 	@Getter
-	private static final ArrayList<IEngineProcessor> adapters = new ArrayList<>();
+	private static final Vector<IEngineProcessor> adapters = new Vector<>();
 	private static boolean init = false;
 
 	public static void init() {
@@ -29,7 +29,7 @@ public class ScriptEngineFacade {
 	}
 
 	public static void invokeEvent(cn.nukkit.event.Event ev, String funcName) {
-		ScriptEngineFacade.invokeALL(funcName, ev);
+		EngineFacade.invokeALL(funcName, ev);
 	}
 
 	public static void invokeEvent(cn.nukkit.event.Event ev) {

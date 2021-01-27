@@ -3,10 +3,7 @@ package site.misaka.script;
 import site.misaka.Loader;
 import site.misaka.engine.EngineAdapter;
 import site.misaka.engine.IEngineProcessor;
-import site.misaka.engine.Processor;
-import site.misaka.process.ScriptEngineFacade;
-import site.misaka.process.UnionData;
-import site.misaka.script.adapter.*;
+import site.misaka.script.object.*;
 import site.misaka.utils.FileUtils;
 
 import java.io.File;
@@ -21,18 +18,18 @@ public class ScriptLoader {
 	public static void loadScript(File file) {
 		final String name = file.getName();
 		String extension = name.substring(name.lastIndexOf('.') + 1);
-		for (IEngineProcessor processor : ScriptEngineFacade.getAdapters()) {
+		for (IEngineProcessor processor : EngineFacade.getAdapters()) {
 			if (processor.extensions().contains(extension)) {
 				Thread thread = new Thread(() -> {
 					synchronized (processor) {
 						try {
+							Thread.currentThread().setContextClassLoader(Loader.class.getClassLoader());
 							EngineAdapter adapter = (EngineAdapter) processor.process(FileUtils.file_get_content(file), UnionData.getProperties(name), engine -> {
-								engine.put("ds", new DataStructureUtils(Loader.getInstance(), name, engine));
-								engine.put("file", new site.misaka.script.adapter.FileUtils(Loader.getInstance(), name, engine));
-								engine.put("parse", new ParseUtils(Loader.getInstance(), name, engine));
-								engine.put("command", new CommandUtils(Loader.getInstance(), name, engine));
-								engine.put("thread", new ThreadUtils(Loader.getInstance(), name, engine));
-								engine.put("__java__", new JavaUtils(Loader.getInstance(), name, engine));
+								engine.put("ds", new DataStructureObject(Loader.getInstance(), name, engine));
+								engine.put("file", new FileObject(Loader.getInstance(), name, engine));
+								engine.put("command", new CommandObject(Loader.getInstance(), name, engine));
+								engine.put("complex", new ComplexObject(Loader.getInstance(), name, engine));
+								engine.put("__java__", new JavaObject(Loader.getInstance(), name, engine));
 							});
 
 							if (adapter != null) {

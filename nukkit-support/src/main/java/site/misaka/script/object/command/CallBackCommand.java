@@ -1,4 +1,4 @@
-package site.misaka.script.adapter;
+package site.misaka.script.object.command;
 
 import cn.nukkit.command.Command;
 import cn.nukkit.command.CommandSender;
@@ -10,9 +10,9 @@ public class CallBackCommand extends Command {
 	@Getter
 	private final EngineAdapter adapter;
 	@Getter
-	private final site.misaka.script.adapter.builder.Command builder;
+	private final CommandInfo builder;
 
-	public CallBackCommand(site.misaka.script.adapter.builder.Command builder, EngineAdapter adapter) {
+	public CallBackCommand(CommandInfo builder, EngineAdapter adapter) {
 		super(builder.getName(), builder.getDescription());
 		this.builder = builder;
 		this.adapter = adapter;
