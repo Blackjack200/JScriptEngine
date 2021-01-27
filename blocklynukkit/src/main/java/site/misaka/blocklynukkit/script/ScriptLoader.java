@@ -3,7 +3,10 @@ package site.misaka.blocklynukkit.script;
 import cn.nukkit.utils.Logger;
 import site.misaka.blocklynukkit.BlocklyNukkit;
 import site.misaka.blocklynukkit.engine.EngineFacade;
-import site.misaka.blocklynukkit.script.object.FunctionManager;
+import site.misaka.blocklynukkit.script.object.Algorithm;
+import site.misaka.blocklynukkit.script.object.BlockItem;
+import site.misaka.blocklynukkit.script.object.Function;
+import site.misaka.blocklynukkit.script.object.Inventory;
 import site.misaka.engine.EngineAdapter;
 import site.misaka.engine.IEngineProcessor;
 import site.misaka.utils.FileUtils;
@@ -26,8 +29,17 @@ public class ScriptLoader {
                     synchronized (processor) {
                         try {
                             EngineAdapter adapter = (EngineAdapter) processor.process(FileUtils.file_get_content(file), EngineFacade.getProperties(name), engine -> {
-                                engine.put("manager", new FunctionManager(BlocklyNukkit.getInstance(), name, engine));
-                                //TODO
+                                engine.put("manager", new Function(BlocklyNukkit.getInstance(), name, engine));
+                                //noinspection SpellCheckingInspection
+                                engine.put("blockitem", new BlockItem(BlocklyNukkit.getInstance(), name, engine));
+                                engine.put("algorithm", new Algorithm(BlocklyNukkit.getInstance(), name, engine));
+                                engine.put("inventory", new Inventory(BlocklyNukkit.getInstance(), name, engine));
+                                //TODO world
+                                //TODO entity
+                                //TODO database
+                                //TODO noteMusic
+                                //TODO window
+                                //TODO particle
                             });
 
                             if (adapter != null) {

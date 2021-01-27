@@ -4,8 +4,11 @@ import cn.nukkit.Server;
 import jdk.nashorn.api.scripting.NashornScriptEngineFactory;
 import lombok.Getter;
 import org.luaj.vm2.script.LuaScriptEngineFactory;
+import site.misaka.blocklynukkit.BlocklyNukkit;
 import site.misaka.blocklynukkit.engine.luaj.BNLuaJProcessor;
 import site.misaka.blocklynukkit.engine.nashorn.BNNashornProcessor;
+import site.misaka.blocklynukkit.script.BasicListener;
+import site.misaka.blocklynukkit.script.ExtraListener;
 import site.misaka.engine.EngineAdapter;
 import site.misaka.engine.IEngineProcessor;
 
@@ -26,6 +29,8 @@ public class EngineFacade {
     public static void init() {
         if (!init) {
             init = true;
+            Server.getInstance().getPluginManager().registerEvents(new BasicListener(), BlocklyNukkit.getInstance());
+            Server.getInstance().getPluginManager().registerEvents(new ExtraListener(), BlocklyNukkit.getInstance());
             processors.add(new BNNashornProcessor(new NashornScriptEngineFactory()));
             processors.add(new BNLuaJProcessor(new LuaScriptEngineFactory()));
         }
