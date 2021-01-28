@@ -16,6 +16,7 @@
         <module>engine/optional-jython-engine</module>
         <module>engine/optional-jruby-engine</module>
         <module>engine/optional-groovy-engine</module>
+        <module>engine/optional-quercus-engine</module>
         <module>basic-nashorn-engine</module>
         <module>blocklynukkit</module>
     </modules>

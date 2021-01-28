@@ -24,8 +24,7 @@ public abstract class PSREngineAdapter<T extends ScriptEngine> extends EngineAda
         return true;
     }
 
-    @Override
-    public Object get(String key) {
+    public Object getValue(String key) {
         return this.engine.get(key);
     }
 

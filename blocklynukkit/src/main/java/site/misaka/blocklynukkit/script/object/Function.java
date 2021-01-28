@@ -433,7 +433,7 @@ public class Function extends AbstractObject {
     @Deprecated
     @SneakyThrows
     public Object getVariableFrom(String scriptName, String varName) {
-        return EngineFacade.getScripts().get(scriptName).get(varName);
+        return EngineFacade.getScripts().get(scriptName).getValue(varName);
     }
 
     @Deprecated

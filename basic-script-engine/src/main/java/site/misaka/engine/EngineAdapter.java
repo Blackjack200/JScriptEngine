@@ -11,7 +11,7 @@ public abstract class EngineAdapter<T> {
 
     public abstract void put(String name, Object val);
 
-    public abstract Object get(String key);
+    public abstract Object getValue(String key);
 
     public abstract boolean load(String code);
 
