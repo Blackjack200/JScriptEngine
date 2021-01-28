@@ -57,13 +57,13 @@ public class NashornAdapter extends PSREngineAdapter<NashornScriptEngine> {
 
 	@SneakyThrows
 	private void extern(String className) {
-		final Class clazz = Class.forName(className, true, ClassLoader.getSystemClassLoader());
+		final Class clazz = Class.forName(className);
 		this.extern_impl(clazz, clazz.getSimpleName());
 	}
 
 	@SneakyThrows
 	private void extern_name(String className, String bind) {
-		final Class clazz = Class.forName(className, true, ClassLoader.getSystemClassLoader());
+		final Class clazz = Class.forName(className);
 		this.extern_impl(clazz, bind);
 	}
 }

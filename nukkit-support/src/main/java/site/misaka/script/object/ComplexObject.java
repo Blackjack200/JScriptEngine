@@ -6,12 +6,19 @@ import cn.nukkit.item.Item;
 import cn.nukkit.level.Position;
 import cn.nukkit.nbt.tag.CompoundTag;
 import cn.nukkit.plugin.Plugin;
+import com.denzelcode.form.event.CustomFormSubmitEvent;
+import com.denzelcode.form.event.ModalFormSubmitEvent;
+import com.denzelcode.form.event.SimpleFormButtonClickEvent;
+import com.denzelcode.form.window.CustomWindowForm;
+import com.denzelcode.form.window.ModalWindowForm;
+import com.denzelcode.form.window.SimpleWindowForm;
 import site.misaka.engine.EngineAdapter;
 import site.misaka.script.object.slapper.HumanSlapper;
 import site.misaka.script.object.slapper.HumanSlapperHook;
 
 import java.nio.charset.StandardCharsets;
 
+@SuppressWarnings("unused")
 public class ComplexObject extends AbstractObject {
 	public ComplexObject(Plugin plugin, String scriptName, EngineAdapter adapter) {
 		super(plugin, scriptName, adapter);
@@ -27,6 +34,24 @@ public class ComplexObject extends AbstractObject {
 
 	public HumanSlapper createSlapper(Position position, String name, Skin skin) {
 		return new HumanSlapper(this, position, name, this.nbt(position, skin), this.getSlapperBuilder().build());
+	}
+
+	public CustomWindowForm customForm(String callback) {
+		CustomWindowForm form = new CustomWindowForm();
+		form.addHandler((CustomFormSubmitEvent event) -> getAdapter().invoke(callback, event));
+		return form;
+	}
+
+	public SimpleWindowForm simpleForm(String callback, String title) {
+		SimpleWindowForm form = new SimpleWindowForm(title);
+		form.addHandler((SimpleFormButtonClickEvent event) -> getAdapter().invoke(callback, event));
+		return form;
+	}
+
+	public ModalWindowForm modalForm(String callback, String title, String content, String acceptButtonText, String cancelButtonText) {
+		ModalWindowForm form = new ModalWindowForm(title, content, acceptButtonText, cancelButtonText);
+		form.addHandler((ModalFormSubmitEvent event) -> getAdapter().invoke(callback, event));
+		return form;
 	}
 
 	private CompoundTag nbt(Position position, Skin skin) {

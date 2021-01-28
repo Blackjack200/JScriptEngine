@@ -78,3 +78,16 @@ Methods:
   function getClass(Object object) : Class
   function getRuntime() : Runtime
 ```
+
+## Field: `complex`
+
+Methods:
+
+```php
+  function getSlapperBuilder() : HumanSlapperHookBuilder
+  function createSlapper(Position position, String name, Skin skin, HumanSlapperHook hook) : HumanSlapper
+  function createSlapper(Position position, String name, Skin skin) : HumanSlapper
+  function customForm(String callback) : CustomWindowForm
+  function simpleForm(String callback, String title) : SimpleWindowForm
+  function modalForm(String callback, String title, String context, String acceptButtonText, String cancelButtonText) : ModalWindowForm
+```

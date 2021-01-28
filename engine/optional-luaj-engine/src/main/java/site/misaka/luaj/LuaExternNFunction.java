@@ -22,7 +22,7 @@ public class LuaExternNFunction extends TwoArgFunction {
 	@SneakyThrows
 	@Override
 	public LuaValue call(LuaValue arg1, LuaValue arg2) {
-		final Class clazz = Class.forName(arg1.checkjstring(1), true, ClassLoader.getSystemClassLoader());
+		final Class clazz = Class.forName(arg1.checkjstring(1));
 		if (this.engine != null) {
 			if (this.engine.get(arg2.checkjstring(1)) != null) {
 				throw new ScriptException("Global variable " + arg2.checkjstring(1) + " is already defined");
