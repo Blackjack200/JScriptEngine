@@ -659,3 +659,7 @@ specific requirements.
 if any, to sign a "copyright disclaimer" for the program, if necessary.
 For more information on this, and how to apply and follow the GNU AGPL, see
 <https://www.gnu.org/licenses/>.
+
+Extended: ALL script based on(depend on ,used in) this project must to be open source when use in Internet Service.
+
+Explanation: https://choosealicense.com/appendix/
