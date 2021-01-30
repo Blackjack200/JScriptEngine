@@ -5,7 +5,8 @@ if [ ! -f "$MAVEN" ]; then
 fi
 echo "[1] Building Artifacts"
 echo "" >maven.log
-mvn -B package --file pom.xml -Dmaven.compile.fork=true -T 128C
+mvn install --file pom.xml -Dmaven.compile.fork=true -T 128C
+mvn package --file pom.xml -Dmaven.compile.fork=true -T 128C
 echo "[2] Build Success"
 rm -rd out
 mkdir out

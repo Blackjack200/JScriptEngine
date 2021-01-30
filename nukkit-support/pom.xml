@@ -32,13 +32,6 @@
             <version>1.2.73</version>
             <scope>compile</scope>
         </dependency>
-        <dependency>
-            <groupId>com.denzelcode.form</groupId>
-            <artifactId>FormAPI</artifactId>
-            <version>2.0-SNAPSHOT</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/FormAPI-2.0-SNAPSHOT.jar</systemPath>
-        </dependency>
         <!--optional_dependency-->
         <dependency>
             <groupId>site.misaka</groupId>
