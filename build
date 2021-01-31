@@ -14,6 +14,7 @@ mkdir out
 find ./* -type f -name optional-*.jar -exec cp -r {} ./out/ \; 2>/dev/null >/dev/null
 cp ./nukkit-support/target/nukkit-support-*.jar ./out
 cp ./blocklynukkit/target/blocklynukkit-*.jar ./out
+cp ./mirai-client/target/mirai-client-*.jar ./out
 echo "[3] Copy Artifacts Success"
 find . -type dir -name target -exec rm -dr {} \; >/dev/null 2>/dev/null
 echo "[*] Clean target directory Success"

@@ -19,6 +19,7 @@
         <module>engine/optional-quercus-engine</module>
         <module>basic-nashorn-engine</module>
         <module>blocklynukkit</module>
+        <module>mirai-client</module>
     </modules>
 
     <properties>

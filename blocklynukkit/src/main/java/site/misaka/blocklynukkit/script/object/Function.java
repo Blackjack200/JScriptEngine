@@ -102,15 +102,7 @@ public class Function extends AbstractObject {
     }
 
     public boolean writeFile(String path, String content) {
-        try {
-            var out = new BufferedWriter(new FileWriter(path));
-            out.write(content);
-            out.close();
-            return true;
-        } catch (IOException ignored) {
-
-        }
-        return false;
+        return FileUtils.file_put_content(path, content);
     }
 
     public boolean isFileSame(String path1, String path2) {

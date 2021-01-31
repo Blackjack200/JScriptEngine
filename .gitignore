@@ -5,3 +5,7 @@ target/
 *.log
 *.classpath
 .DS_Store
+logs
+device.json
+config.json
+scripts
