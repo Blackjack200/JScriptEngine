@@ -48,11 +48,11 @@ public class BotServer {
         });
 
         this.bot.getEventChannel().subscribeAlways(BotOfflineEvent.class, (e) -> {
-            this.getLogger().info("机器人掉线,尝试自动重连");
-            this.bot.login();
+            this.getLogger().info("机器人掉线");
         });
 
         this.bot.login();
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> EngineFacade.invokeALL("finalize")));
     }
 
     public MiraiLogger getLogger() {
