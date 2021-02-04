@@ -1,6 +1,6 @@
 name: NukkitScriptLoader
 main: site.misaka.Loader
-version: 0.0.5
+version: 0.0.6
 api: 1.0.0
 author: Misaka
 load: POSTWORLD

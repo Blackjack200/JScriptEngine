@@ -10,7 +10,8 @@ import cn.nukkit.permission.Permission;
 import cn.nukkit.plugin.Plugin;
 import cn.nukkit.scheduler.TaskHandler;
 import cn.nukkit.utils.Config;
-import com.alibaba.fastjson.JSON;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.sun.management.OperatingSystemMXBean;
 import lombok.SneakyThrows;
 import lombok.var;
@@ -23,9 +24,7 @@ import site.misaka.blocklynukkit.utils.MetricsLite;
 import site.misaka.engine.EngineAdapter;
 import site.misaka.utils.FileUtils;
 
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.management.ManagementFactory;
 import java.net.DatagramPacket;
@@ -33,6 +32,7 @@ import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.security.MessageDigest;
 import java.util.Arrays;
+import java.util.LinkedHashMap;
 import java.util.Locale;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -128,11 +128,12 @@ public class Function extends AbstractObject {
     }
 
     public Object parseJSON(String content) {
-        return JSON.parse(content);
+        return (new Gson()).fromJson(content, new TypeToken<LinkedHashMap<String, Object>>() {
+        }.getType());
     }
 
     public String emitJSON(Object data) {
-        return JSON.toJSONString(data);
+        return (new Gson()).toJson(data);
     }
 
     @Deprecated

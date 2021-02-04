@@ -9,6 +9,7 @@ import site.misaka.engine.EngineAdapter;
 
 import java.util.Vector;
 
+@SuppressWarnings({"DeprecatedIsStillUsed", "unused"})
 public class Algorithm extends AbstractObject {
     public Algorithm(Plugin plugin, String scriptName, EngineAdapter adapter) {
         super(plugin, scriptName, adapter);
@@ -37,6 +38,7 @@ public class Algorithm extends AbstractObject {
         }
     }
 
+    @Deprecated
     public void forEachBlockInArea(Position first, Position second, Action action) {
         val minX = Math.min(first.getX(), second.getX());
         val maxX = Math.max(first.getX(), second.getX());
@@ -68,6 +70,7 @@ public class Algorithm extends AbstractObject {
         });
     }
 
+    @Deprecated
     public void forLinkedBlock(Vector<Block> vector, Position position, String callback) {
         val originBlock = position.getLevelBlock();
         if (vector.contains(originBlock)) {

@@ -1,6 +1,7 @@
 package site.misaka.mirai.script.object;
 
-import com.alibaba.fastjson.JSON;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import lombok.Getter;
 import lombok.SneakyThrows;
 import site.misaka.engine.EngineAdapter;
@@ -14,6 +15,7 @@ import java.nio.file.FileVisitor;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.attribute.BasicFileAttributes;
+import java.util.LinkedHashMap;
 
 public class FileObject extends AbstractObject {
     @Getter
@@ -27,11 +29,12 @@ public class FileObject extends AbstractObject {
     }
 
     public Object parseJSON(String content) {
-        return JSON.parse(content);
+        return (new Gson()).fromJson(content, new TypeToken<LinkedHashMap<String, Object>>() {
+        }.getType());
     }
 
     public String emitJSON(Object data) {
-        return JSON.toJSONString(data);
+        return (new Gson()).toJson(data);
     }
 
     public String read(String path) {
