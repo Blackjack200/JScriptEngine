@@ -1,7 +1,7 @@
 package site.misaka.mirai;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import net.mamoe.mirai.Bot;
 import net.mamoe.mirai.BotFactory;
 import net.mamoe.mirai.utils.BotConfiguration;
@@ -25,11 +25,12 @@ public class Launcher {
             map.put("account", 110L);
             map.put("password", "123456");
             map.put("protocol", "WATCH");
-            FileUtils.file_put_content(file.getAbsolutePath(), JSON.toJSON(map).toString());
+            FileUtils.file_put_content(file.getAbsolutePath(), (new Gson()).toJson(map));
         }
 
         try {
-            Map<String, Object> data = ((JSONObject) JSON.parse(FileUtils.file_get_content(file))).getInnerMap();
+            Map<String, Object> data = (new Gson()).fromJson(FileUtils.file_get_content(file), new TypeToken<LinkedHashMap<?, ?>>() {
+            }.getType());
             BotConfiguration configuration = new BotConfiguration();
             BotConfiguration.MiraiProtocol protocol = BotConfiguration.MiraiProtocol.ANDROID_WATCH;
 
@@ -44,7 +45,7 @@ public class Launcher {
             configuration.setProtocol(protocol);
             configuration.fileBasedDeviceInfo("device.json");
             configuration.noBotLog();
-            Bot bot = BotFactory.INSTANCE.newBot(Long.parseLong(data.get("account").toString()), data.get("password").toString(), configuration);
+            Bot bot = BotFactory.INSTANCE.newBot(((Double) data.get("account")).longValue(), data.get("password").toString(), configuration);
             BotServer server = new BotServer(bot, path);
             server.start();
         } catch (IOException e) {

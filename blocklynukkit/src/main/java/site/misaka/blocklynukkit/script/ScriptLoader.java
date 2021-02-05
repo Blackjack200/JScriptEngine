@@ -43,8 +43,8 @@ public class ScriptLoader {
                             });
 
                             if (adapter != null) {
-                                EngineFacade.getScripts().put(name, adapter);
                                 logger.info("Load Script: " + name);
+                                EngineFacade.getScripts().put(name, adapter);
                                 return;
                             }
                             BlocklyNukkit.getInstance().getLogger().info("Failed to load script: " + name);

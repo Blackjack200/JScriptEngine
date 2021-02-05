@@ -1,12 +1,10 @@
 #!/bin/bash
 MAVEN=$(which mvn)
 if [ ! -f "$MAVEN" ]; then
-  echo "[*] Cannot find maven" && exit 0
+  echo "[*] Cannot find maven" && exit 1
 fi
 echo "[1] Building Artifacts"
-echo "" >maven.log
-mvn install --file pom.xml -Dmaven.compile.fork=true -T 128C
-mvn package --file pom.xml -Dmaven.compile.fork=true -T 128C
+mvn -B package --file pom.xml -Dmaven.compile.fork=true -T 128C
 echo "[2] Build Success"
 rm -rd out
 mkdir out
@@ -16,5 +14,5 @@ cp ./nukkit-support/target/nukkit-support-*.jar ./out
 cp ./blocklynukkit/target/blocklynukkit-*.jar ./out
 cp ./mirai-client/target/mirai-client-*.jar ./out
 echo "[3] Copy Artifacts Success"
-find . -type dir -name target -exec rm -dr {} \; >/dev/null 2>/dev/null
+mvn -B clean --file pom.xml -Dmaven.compile.fork=true -T 128C
 echo "[*] Clean target directory Success"

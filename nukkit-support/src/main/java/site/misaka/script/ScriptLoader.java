@@ -33,8 +33,8 @@ public class ScriptLoader {
 							});
 
 							if (adapter != null) {
-								UnionData.getScripts().put(name, adapter);
 								Loader.getInstance().getLogger().info("Load Script: " + name);
+								UnionData.getScripts().put(name, adapter);
 								return;
 							}
 							Loader.getInstance().getLogger().info("Failed to load script: " + name);
