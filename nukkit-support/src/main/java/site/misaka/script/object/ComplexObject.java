@@ -1,12 +1,15 @@
 package site.misaka.script.object;
 
+import cn.nukkit.Server;
 import cn.nukkit.entity.Entity;
 import cn.nukkit.entity.data.Skin;
 import cn.nukkit.item.Item;
 import cn.nukkit.level.Position;
 import cn.nukkit.nbt.tag.CompoundTag;
 import cn.nukkit.plugin.Plugin;
+import cn.nukkit.scheduler.TaskHandler;
 import site.misaka.engine.EngineAdapter;
+import site.misaka.script.UnionData;
 import site.misaka.script.object.slapper.HumanSlapper;
 import site.misaka.script.object.slapper.HumanSlapperHook;
 
@@ -55,5 +58,17 @@ public class ComplexObject extends AbstractObject {
         nbt.putString("Leggings", Item.get(0).getName());
         nbt.putString("Boots", Item.get(0).getName());
         return nbt;
+    }
+
+    public TaskHandler scheduleDelayedTask(String callback, int delay, boolean asynchronous) {
+        return Server.getInstance().getScheduler().scheduleDelayedTask(this.getPlugin(), () -> this.getAdapter().invoke(callback), delay, asynchronous);
+    }
+
+    public TaskHandler scheduleRepeatingTask(String callback, int period, boolean asynchronous) {
+        return Server.getInstance().getScheduler().scheduleRepeatingTask(this.getPlugin(), () -> this.getAdapter().invoke(callback), period, asynchronous);
+    }
+
+    public TaskHandler scheduleDelayedRepeatingTask(String callback, int period, int delay, boolean asynchronous) {
+        return Server.getInstance().getScheduler().scheduleDelayedRepeatingTask(this.getPlugin(), () -> this.getAdapter().invoke(callback), period, delay, asynchronous);
     }
 }

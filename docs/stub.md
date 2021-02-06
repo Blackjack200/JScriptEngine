@@ -66,8 +66,12 @@ Methods:
 ```php
   function createBuilder() : CommandBuilder
   //This command is a compeleted CommandBuilder
-  //Demo builder.callback("callback_func").name("commandName").description("Demo command").build()
+  //Demo builder.callback("callback_func").name("commandName").description("Demo command").permission("xx.xx.xx").build()
   function register(Command builder) : void
+  function createInfo(String name, String description, String callback, String permission) : CommandInfo
+  function createInfo(String name, String description, String callback) : CommandInfo
+  function createPermission(String permission, String description, String _default) : void
+  function removePermission(String permission) : void
 ```
 
 ## Field: `__java__`
@@ -87,4 +91,18 @@ Methods:
   function getSlapperBuilder() : HumanSlapperHookBuilder
   function createSlapper(Position position, String name, Skin skin, HumanSlapperHook hook) : HumanSlapper
   function createSlapper(Position position, String name, Skin skin) : HumanSlapper
+  function scheduleDelayedTask(String callback, int delay, boolean asynchronous) : TaskHandler
+  function scheduleRepeatingTask(String callback, int delay, boolean asynchronous) : TaskHandler
+  function scheduleDelayedRepeatingTask(String callback, int period, int delay, boolean asynchronous) : TaskHandler
+```
+
+## Field: `internal`
+
+Methods:
+
+```php
+  function getSystemCPULoad() : double
+  function getAvailableProcessorCount() : int
+  function getMemoryTotalSizeMB() : double
+  function getMemoryUsedSizeMB() : double
 ```

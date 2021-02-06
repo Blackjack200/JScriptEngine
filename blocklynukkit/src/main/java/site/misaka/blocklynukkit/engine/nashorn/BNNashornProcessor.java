@@ -2,11 +2,11 @@ package site.misaka.blocklynukkit.engine.nashorn;
 
 import jdk.nashorn.api.scripting.NashornScriptEngine;
 import jdk.nashorn.api.scripting.NashornScriptEngineFactory;
-import site.misaka.engine.PSREngineProcessor;
+import site.misaka.engine.JSR223Processor;
 
 import javax.script.ScriptEngine;
 
-public class BNNashornProcessor extends PSREngineProcessor<NashornScriptEngineFactory, BNNashornAdapter> {
+public class BNNashornProcessor extends JSR223Processor<NashornScriptEngineFactory, BNNashornAdapter> {
 
     public BNNashornProcessor(NashornScriptEngineFactory factory) {
         super(factory);

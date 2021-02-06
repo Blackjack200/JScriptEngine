@@ -5,10 +5,10 @@ import lombok.Getter;
 
 @Builder
 public class HumanSlapperHook {
-	@Getter
-	private String onUpdate;
-	@Getter
-	private String attack;
-	@Getter
-	private String entityBaseTick;
+    @Getter
+    private String onUpdate;
+    @Getter
+    private String attack;
+    @Getter
+    private String entityBaseTick;
 }

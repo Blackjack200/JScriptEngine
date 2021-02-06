@@ -3,8 +3,8 @@ package site.misaka.engine;
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
 
-public abstract class PSREngineAdapter<T extends ScriptEngine> extends EngineAdapter<T> {
-    public PSREngineAdapter(T engine) {
+public abstract class JSR223Adapter<T extends ScriptEngine> extends EngineAdapter<T> {
+    public JSR223Adapter(T engine) {
         super(engine);
     }
 

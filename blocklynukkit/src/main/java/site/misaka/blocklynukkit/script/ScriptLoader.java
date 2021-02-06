@@ -18,6 +18,7 @@ import java.nio.file.FileVisitor;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.attribute.BasicFileAttributes;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class ScriptLoader {
     public static void loadScript(File file, Logger logger) {
@@ -45,6 +46,7 @@ public class ScriptLoader {
                             if (adapter != null) {
                                 logger.info("Load Script: " + name);
                                 EngineFacade.getScripts().put(name, adapter);
+                                EngineFacade.getDirection().put(adapter, new ConcurrentHashMap<>());
                                 return;
                             }
                             BlocklyNukkit.getInstance().getLogger().info("Failed to load script: " + name);

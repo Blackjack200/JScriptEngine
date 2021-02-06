@@ -17,7 +17,6 @@ import java.nio.file.FileVisitor;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.attribute.BasicFileAttributes;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 
 public class FileObject extends AbstractObject {
@@ -41,12 +40,12 @@ public class FileObject extends AbstractObject {
         return yaml.dump(data);
     }
 
-    public static Object parseJSON(String content) {
+    public Object parseJSON(String content) {
         return (new Gson()).fromJson(content, new TypeToken<LinkedHashMap<?, ?>>() {
         }.getType());
     }
 
-    public static String emitJSON(Object data) {
+    public String emitJSON(Object data) {
         return (new Gson()).toJson(data);
     }
 
