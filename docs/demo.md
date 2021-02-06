@@ -5,14 +5,14 @@ Demo
 
 ```java
 class DEMO implements Listener {
-	@EventHandler
-	public void PlayerJoinEvent(PlayerJoinEvent event) {
-		event.getPlayer().sendMessage("Hello");
-	}
+    @EventHandler
+    public void PlayerJoinEvent(PlayerJoinEvent event) {
+        event.getPlayer().sendMessage("Hello");
+    }
 
-	public void finalize() {
-		//onDisable
-	}
+    public void finalize() {
+        //onDisable
+    }
 }
 ```
 
@@ -20,6 +20,7 @@ class DEMO implements Listener {
 
 ```javascript
 logger.warning("JavaScript")
+
 function PlayerJoinEvent(event) {
     event.getPlayer().sendMessage("Hello")
 }
@@ -85,6 +86,17 @@ def PlayerJoinEvent(event)
 end
 
 def finalize()
-    //onDisablel
+    //onDisable
 end
+```
+
+```PHP
+$logger->warning("PHP");
+function PlayerJoinEvent($event) {
+    $event->getPlayer()->sendMessage("Hello"); 
+}
+
+function finalize() {
+    //onDisable
+}
 ```
