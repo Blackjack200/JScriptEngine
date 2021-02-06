@@ -56,7 +56,7 @@ logger.warning("Python")
 def PlayerJoinEvent(event) :
     event.getPlayer().sendMessage("Hello")
 def finalize():
-    //onDisable
+    #onDisable
 ```
 
 ## Lua
@@ -73,7 +73,7 @@ extern_name("java.lang.Runtime", "r")
 r:getRuntime():gc()
 
 function finalize()
-    //onDisable
+    --onDisable
 end
 ```
 
@@ -86,7 +86,7 @@ def PlayerJoinEvent(event)
 end
 
 def finalize()
-    //onDisable
+    #onDisable
 end
 ```
 
