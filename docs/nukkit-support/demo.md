@@ -1,7 +1,4 @@
-Demo
-===
-
-# Original
+# 演示代码
 
 ```java
 class DEMO implements Listener {

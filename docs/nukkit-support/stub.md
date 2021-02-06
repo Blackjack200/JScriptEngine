@@ -1,11 +1,6 @@
-Stub
-===
+# API
 
-# Global Constant
-
-## Field: `logger`
-
-Methods:
+## 全局常量: `logger`
 
 ```php
   function debug(String message) : void
@@ -18,13 +13,11 @@ Methods:
   function warning(String message) : void
 ```
 
-## Field: `server`
+## 全局常量: `server`
 
 Return: Server Instance
 
-## Field: `ds`
-
-Methods:
+## 全局常量: `ds`
 
 ```php
   function list() : LinkedList
@@ -37,9 +30,7 @@ Methods:
   function vector(T element) : Vector
 ```
 
-## Field: `file`
-
-Methods:
+## 全局常量: `file`
 
 ```php
   //success ? true : false
@@ -55,13 +46,11 @@ Methods:
   function emitJSON(Object content) : String
 ```
 
-## Field: `__NAME__`
+## 全局常量: `__NAME__`
 
 the name of script
 
-## Field: `command`
-
-Methods:
+## 全局常量: `command`
 
 ```php
   function createBuilder() : CommandBuilder
@@ -74,18 +63,14 @@ Methods:
   function removePermission(String permission) : void
 ```
 
-## Field: `__java__`
-
-Methods:
+## 全局常量: `__java__`
 
 ```php
   function getClass(Object object) : Class
   function getRuntime() : Runtime
 ```
 
-## Field: `complex`
-
-Methods:
+## 全局常量: `complex`
 
 ```php
   function getSlapperBuilder() : HumanSlapperHookBuilder
@@ -96,9 +81,7 @@ Methods:
   function scheduleDelayedRepeatingTask(String callback, int period, int delay, boolean asynchronous) : TaskHandler
 ```
 
-## Field: `internal`
-
-Methods:
+## 全局常量: `internal`
 
 ```php
   function getSystemCPULoad() : double
