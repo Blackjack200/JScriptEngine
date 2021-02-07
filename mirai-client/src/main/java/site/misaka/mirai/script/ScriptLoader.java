@@ -5,6 +5,7 @@ import site.misaka.engine.IEngineProcessor;
 import site.misaka.mirai.BotServer;
 import site.misaka.mirai.Launcher;
 import site.misaka.mirai.script.object.FileObject;
+import site.misaka.mirai.script.object.InternalObject;
 import site.misaka.utils.FileUtils;
 
 import java.io.File;
@@ -27,6 +28,7 @@ public class ScriptLoader {
                             Thread.currentThread().setContextClassLoader(Launcher.class.getClassLoader());
                             EngineAdapter adapter = (EngineAdapter) processor.process(FileUtils.file_get_content(file), UnionData.getProperties(name), engine -> {
                                 engine.put("file", new FileObject(BotServer.getInstance().getPath() + "/scripts", name, engine));
+                                engine.put("internal", new InternalObject(BotServer.getInstance().getPath() + "/scripts", name, engine));
                             });
 
                             if (adapter != null) {

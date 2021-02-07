@@ -10,6 +10,16 @@ Discord: [Link](https://discord.gg/g9a8TrZu34)
 
 ## 文档
 
+### 脚本引擎
+
+特有函数: [列表](/docs/engine.md)
+
+_JScriptEngine项目的核心部分, JSR-223脚本引擎的封装. 负责脚本加载和处理_
+
+### 脚本加载器
+
+_对特定软件的脚本封装_
+
 ### `nukkit-support`
 
 API: [API](/docs/nukkit-support/stub.md)
@@ -20,14 +30,16 @@ API: [API](/docs/nukkit-support/stub.md)
 
 ### [WIP] `blocklynukkit`
 
-这个模块是对BlocklyNukkit的再次实现, 目前没有完成, 暂时不可以在生产环境中使用
+BlocklyNukkit的实现, 没有完成, 不可以在生产环境中使用
+
+教程: [BlocklyNukkit官方文档](http://blocklynukkit.info)
 
 ### `mirai-client`
 
-对`mirai-core`库的封装, 支持使用JS, Lua, Groovy进行开发.
+`mirai-core`库的封装, 支持使用JS, Lua, Groovy进行开发QQ机器人.
 
-### `engine`
+API: [API](/docs/mirai-client/stub.md)
 
-引擎提供的特有函数: [列表](/docs/engine.md)
+演示: [演示](/docs/mirai-client/demo.md)
 
-JScriptEngine项目的核心部分, 为JSR-223脚本引擎的封装. 负责脚本加载和处理
+安装: [安装](/docs/mirai-client/installation.md)
