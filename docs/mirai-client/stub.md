@@ -10,12 +10,9 @@
 ## 全局常量: `logger`
 
 ```php
-  function verbose(Throwable arg0) : void
-  function debug(Throwable arg0) : void
-  function info(Throwable arg0) : void
-  function warning(Throwable arg0) : void
-  function error(Throwable arg0) : void
-  function call(SimpleLogger$LogPriority arg0, String arg1, Throwable arg2) : void
+  function info(String message) : void
+  function warning(String message) : void
+  function error(String message) : void
 ```
 
 ## 全局常量: `file`

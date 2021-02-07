@@ -33,16 +33,6 @@ void finalize() {
 }
 ```
 
-## Python
-
-```python
-logger.warning("Python")
-def GroupMessageEvent(event) :
-    event.getSender().sendMessage("Hello")
-def finalize():
-    #onDisable
-```
-
 ## Lua
 
 ```lua
@@ -59,30 +49,4 @@ r:getRuntime():gc()
 function finalize()
     --onDisable
 end
-```
-
-## Ruby
-
-```ruby
-logger.warning("Ruby")
-def GroupMessageEvent(event)
-    event.getSender().sendMessage("Hello") 
-end
-
-def finalize()
-    #onDisable
-end
-```
-
-## PHP
-
-```PHP
-$logger->warning("PHP");
-function GroupMessageEvent($event) {
-    $event->getPlayer()->sendMessage("Hello"); 
-}
-
-function finalize() {
-    //onDisable
-}
 ```

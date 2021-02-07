@@ -22,11 +22,11 @@ _对特定软件的脚本封装_
 
 ### `nukkit-support`
 
-API: [API](/docs/nukkit-support/stub.md)
+安装: [安装](/docs/nukkit-support/installation.md)
 
 演示: [演示](/docs/nukkit-support/demo.md)
 
-安装: [安装](/docs/nukkit-support/installation.md)
+API: [API](/docs/nukkit-support/stub.md)
 
 ### [WIP] `blocklynukkit`
 
@@ -38,8 +38,8 @@ BlocklyNukkit的实现, 没有完成, 不可以在生产环境中使用
 
 `mirai-core`库的封装, 支持使用JS, Lua, Groovy进行开发QQ机器人.
 
-API: [API](/docs/mirai-client/stub.md)
+安装: [安装](/docs/mirai-client/installation.md)
 
 演示: [演示](/docs/mirai-client/demo.md)
 
-安装: [安装](/docs/mirai-client/installation.md)
+API: [API](/docs/mirai-client/stub.md)
