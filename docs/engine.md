@@ -16,7 +16,7 @@ _所有公开的Java方法都可以在脚本中被调用, 引擎特殊用法主�
 ```java
 package demo;
 
-class X {
+public class X {
     public static Object test;
 
     public static void method1();
@@ -26,6 +26,19 @@ class X {
     public static void method3(Runnable runnable);
 
     public static void method4(int val);
+}
+
+
+public class XX {
+    public Object test;
+
+    public void method1();
+
+    public void method2(Object object);
+
+    public void method3(Runnable runnable);
+
+    public void method4(int val);
 }
 ```
 
@@ -46,13 +59,25 @@ X_Class.method3(function () {
 })
 //自动转化
 X_Class.method4(123)
+
+//面向对象
+/**@java-object demo.XX XX*/
+XX.method1()
+//自动把String转换为Java中的对象
+XX.method2("idk")
+//闭包函数自动转换
+XX.method3(function () {
+    print(test)
+})
+//自动转化
+XX.method4(123)
 ```
 
 ## PHP
 
 ```php
 <?php
-//无效, 所有对标准输出的操作应使用模块提供的logger或者System.out
+//无效, 所有对标准输出的操作应使用加载器提供的logger或者System.out
 echo 'test';
 //有效
 extern('java.lang.System');

@@ -1,5 +1,12 @@
 # API
 
+_演示代码_
+
+```javascript
+internal.getAvailableProcessorCount()
+file.parseJSON("")
+```
+
 ## 全局常量: `server`
 
 ```php

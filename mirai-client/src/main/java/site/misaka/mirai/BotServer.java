@@ -2,7 +2,6 @@ package site.misaka.mirai;
 
 import lombok.Getter;
 import net.mamoe.mirai.Bot;
-import net.mamoe.mirai.event.Listener;
 import net.mamoe.mirai.event.events.BotOfflineEvent;
 import net.mamoe.mirai.event.events.BotOnlineEvent;
 import net.mamoe.mirai.utils.MiraiLogger;
@@ -19,7 +18,6 @@ public class BotServer {
     private final String path;
     private static BotServer server;
     private final MiraiLogger logger;
-    private Listener listener;
 
     public BotServer(Bot bot, String path) {
         this.bot = bot;
@@ -35,11 +33,10 @@ public class BotServer {
 
         this.bot.getEventChannel().registerListenerHost(new BotEventHandler());
 
-        listener = this.bot.getEventChannel().subscribeAlways(BotOnlineEvent.class, (e) -> {
+        this.bot.getEventChannel().subscribeOnce(BotOnlineEvent.class, (e) -> {
             this.getLogger().info("机器人登陆成功,开始加载脚本");
             try {
                 ScriptLoader.scanLoader(script.toPath());
-                listener.complete();
                 this.bot.getConfiguration().noNetworkLog();
                 this.bot.getConfiguration().noBotLog();
             } catch (IOException exception) {

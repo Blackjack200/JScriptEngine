@@ -14,9 +14,11 @@
 java -jar <jar-name>
 ```
 
-自动在程序运行目录生成`config.json`和`device.json`
+启动后自动在程序运行目录生成`config.json`和`device.json`还有`scripts`文件夹
 
-#### config.json
+## 配置文件详解
+
+#### `config.json`
 
 ```json5
 {
@@ -29,7 +31,7 @@ java -jar <jar-name>
 }
 ```
 
-#### device.json
+#### `device.json`
 
 mirai使用的虚拟设备信息, 一般不需要修改
 

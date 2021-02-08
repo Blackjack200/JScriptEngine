@@ -1,5 +1,12 @@
 # API
 
+_演示代码_
+
+```javascript
+internal.getAvailableProcessorCount()
+file.parseJSON("")
+```
+
 ## 全局常量: `logger`
 
 ```php
@@ -15,7 +22,7 @@
 
 ## 全局常量: `server`
 
-Return: Server Instance
+Nukkit的服务器实例
 
 ## 全局常量: `ds`
 
@@ -48,7 +55,7 @@ Return: Server Instance
 
 ## 全局常量: `__NAME__`
 
-the name of script
+脚本的名称, 也就是文件名
 
 ## 全局常量: `command`
 

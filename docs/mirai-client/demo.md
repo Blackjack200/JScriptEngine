@@ -9,11 +9,6 @@ function GroupMessageEvent(event) {
     event.getSender().sendMessage("Hello")
 }
 
-extern("java.lang.System")
-System.out.println("TEST")
-extern_name("java.lang.Runtime", "r")
-r.getRuntime().gc()
-
 function finalize() {
     //onDisable
 }
@@ -40,11 +35,6 @@ logger:warning("Lua");
 function GroupMessageEvent(event)
     event.getSender().sendMessage("Hello");
 end
-
-extern("java.lang.System")
-System.out:println("TEST")
-extern_name("java.lang.Runtime", "r")
-r:getRuntime():gc()
 
 function finalize()
     --onDisable
